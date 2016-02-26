@@ -1,0 +1,11 @@
+---
+- hosts: all
+  gather_facts: no
+  tasks:
+  - raw: "show arp"
+    register: show
+    when: "'ios' in group_names"
+  - raw: "show ip arp"
+    register: show
+    when: "'nxos' in group_names"
+  - debug: var=show.stdout_lines

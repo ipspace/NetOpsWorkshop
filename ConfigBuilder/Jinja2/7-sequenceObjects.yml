@@ -1,0 +1,7 @@
+---
+hostname: R1
+users:
+  - { username: cisco, password: cisco }
+  - username: admin
+    password: admin
+    privilege: 15

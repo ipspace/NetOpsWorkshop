@@ -1,0 +1,7 @@
+---
+ansible_device_os: nxos
+cli:
+  host: "{{ inventory_hostname }}"
+  username: "{{ ansible_ssh_user }}"
+  password: "{{ ansible_ssh_pass }}"
+  transport: cli

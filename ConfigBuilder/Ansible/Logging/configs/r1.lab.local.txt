@@ -1,0 +1,7 @@
+logging host 172.16.1.12
+!
+snmp-server community cisco RO
+snmp-server location Rack-1
+snmp-server contact admin@lab.local
+snmp-server chassis-id
+snmp-server host 172.16.1.12 cisco

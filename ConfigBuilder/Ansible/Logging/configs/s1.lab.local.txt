@@ -1,0 +1,8 @@
+logging server 172.16.1.12
+!
+snmp-server contact admin@lab.local
+snmp-server location Rack-2
+snmp-server user cisco network-operator
+snmp-server host 172.16.1.12 traps version 2 cisco
+snmp-server enable traps link
+snmp-server community cisco group network-operator
