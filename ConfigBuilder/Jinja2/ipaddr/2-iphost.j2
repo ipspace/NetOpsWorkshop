@@ -1,0 +1,9 @@
+{% for intf in interfaces %}
+!
+! prefix = {{intf.prefix}}
+! ipaddr(1) = {{intf.prefix | ipaddr(1) }}
+!
+interface {{intf.name}}
+  {% set gw = intf.prefix|ipaddr(1) %}
+  ip address {{gw | ipaddr('address') }} {{intf.prefix | ipaddr('netmask')}}
+{% endfor %}

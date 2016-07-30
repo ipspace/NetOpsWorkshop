@@ -1,0 +1,6 @@
+---
+interfaces:
+  - name:   GigabitEthernet0/0
+    prefix: 172.16.0.0/24
+  - name:   GigabitEthernet0/1
+    prefix: 172.16.1.18/30

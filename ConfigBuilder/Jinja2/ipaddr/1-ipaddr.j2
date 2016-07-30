@@ -1,0 +1,5 @@
+{% for intf in interfaces %}
+interface {{intf.name}}
+  description IP addr = {{intf.ip}}
+  ip address {{intf.ip | ipaddr('address')}} {{intf.ip | ipaddr('netmask')}}
+{% endfor %}
