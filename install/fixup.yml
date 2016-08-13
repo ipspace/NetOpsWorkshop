@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+  - lineinfile: 
+      dest:   /etc/hosts
+      regexp: "{{item.key}}"
+      line:   "{{item.value}} {{item.key}}"
+    with_dict: "{{nodes}}"
+    become: true

@@ -1,3 +1,9 @@
+#
+# This playbook removes SNMP configuration from IOS and Nexus-OS devices
+# 
+# Use it before running config-simple playbook, otherwise you won't notice
+# any difference
+#
 ---
 - hosts: ios
   tasks:

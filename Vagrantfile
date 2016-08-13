@@ -5,9 +5,9 @@ Vagrant.configure(2) do |config|
   config.vm.box = "phusion/ubuntu-14.04-amd64"
   config.vm.box_check_update = false
 
-  config.vm.define "nms2" do |nms2|
-    nms2.vm.host_name = "nms2"
-    nms2.vm.network "private_network", ip: "172.16.1.12"
+  config.vm.define "nms" do |nms|
+    nms.vm.host_name = "nms"
+    nms.vm.network "private_network", ip: "172.16.1.12"
   end
 
   # argument is a set of non-required options.

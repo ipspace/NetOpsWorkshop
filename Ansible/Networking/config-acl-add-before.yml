@@ -1,0 +1,23 @@
+#
+# Configure an ACL on Cisco IOS
+#
+# Used to demonstrate how to use BEFORE parameter to erase an ACL
+# if it needs to be changed
+#
+---
+- hosts: ios
+  tasks:
+  - name: "Configure ACL on Cisco IOS"
+    ios_config:
+      provider: "{{cli}}"
+      parents:
+        - "ip access-list extended AllowedTraffic"
+      lines:
+        - "permit tcp any eq www any"
+        - "permit tcp any any eq www"
+        - "deny   tcp any any log"
+        - "deny   ip any any log"
+      match: exact
+      replace: block
+      before:
+        - "no ip access-list extended AllowedTraffic"

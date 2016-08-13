@@ -1,0 +1,15 @@
+# Simple Ansible inventory used to configure a few files
+# on the Ubuntu NMS VM
+#
+localhost
+
+# You have to insert the IP addresses of your network devices in
+# the NODES line
+#
+# r1.lab.local - Cisco IOS router (currently @ 172.16.1.100)
+# s1.lab.local - Nexus OS switch (currently @ 172.16.1.101)
+#
+# DO NOT REMOVE ANY QUOTES or you'll have a fun troubleshooting session
+#
+[all:vars]
+nodes={ "r1.lab.local": "172.16.1.100", "s1.lab.local": "172.16.1.101" }

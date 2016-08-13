@@ -1,3 +1,12 @@
+#
+# Configure a few SNMP parameters on Cisco IOS and Nexus OS
+#
+# Run the playbook with --check first to see what will be changed
+# then without --check to do the changes
+#
+# Repeat the process a few times to see how Ansible figures out
+# what needs to be changed
+#
 ---
 - hosts: ios
   tasks:
