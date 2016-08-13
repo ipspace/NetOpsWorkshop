@@ -1,0 +1,7 @@
+! Local users
+{% for user in users %}
+user {{user.username}} password {{user.password}}
+{% if user.privilege is defined %}
+user {{user.username}} privilege {{user.privilege}}
+{% endif %}
+{% endfor %}

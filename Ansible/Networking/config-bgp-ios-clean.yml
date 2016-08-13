@@ -1,0 +1,23 @@
+---
+- hosts: ios
+  name: "Cleanup BGP configuration from Cisco IOS"
+  tags: clean
+  tasks:
+  - ios_command: provider="{{cli}}" commands="show ip protocols summary | include bgp"
+    register: protocols
+  - debug: var=protocols
+  - set_fact: bgp_as="{% set r = protocols.stdout[0] %}{{ r | regex_replace('^.*bgp\s+(\d+)$','\\1') }}"
+  - ios_config:
+      provider: "{{cli}}"
+      lines:
+        - "no router bgp {{bgp_as}}"
+    when: "{{ bgp_as }}"
+
+- hosts: ios
+  name: "Create BGP process on Cisco IOS"
+  tags: create
+  tasks:
+  - ios_config:
+      provider: "{{cli}}"
+      lines:
+        - "router bgp 123"

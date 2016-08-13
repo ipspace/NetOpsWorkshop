@@ -1,0 +1,10 @@
+---
+- hosts: ios
+  gather_facts: no
+  tasks:
+  - raw: "show arp"
+
+- hosts: nxos
+  gather_facts: no
+  tasks:
+  - raw: "show ip arp"

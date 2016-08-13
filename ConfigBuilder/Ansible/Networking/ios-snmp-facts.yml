@@ -1,0 +1,9 @@
+---
+- hosts: ios
+  tasks:
+  - snmp_facts:
+      host: "{{inventory_hostname}}"
+      version: v2
+      community: cisco
+    register: result
+  - debug: var=result.ansible_facts

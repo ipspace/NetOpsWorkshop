@@ -1,0 +1,7 @@
+---
+- hosts: ios
+  tasks:
+  - ios_command:
+      commands: show arp
+      provider: "{{cli}}"
+      

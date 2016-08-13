@@ -1,0 +1,8 @@
+---
+- hosts: ios
+  tasks:
+  - raw: "show arp"
+
+- hosts: nxos
+  tasks:
+  - raw: "show ip arp"

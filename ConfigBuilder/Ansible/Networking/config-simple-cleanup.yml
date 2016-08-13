@@ -1,0 +1,21 @@
+---
+- hosts: ios
+  tasks:
+  - name: "Unconfigure SNMP on IOS devices"
+    ios_config:
+      provider: "{{cli}}"
+      lines:
+        - "no snmp-server community {{snmp_community}}"
+        - "no snmp-server contact {{snmp_contact}}"
+        - "no snmp-server host {{snmp_host}} {{snmp_community}}"
+
+- hosts: nxos
+  tasks:
+  - name: "Unconfigure SNMP on Nexus OS devices"
+    nxos_config:
+      provider: "{{cli}}"
+      lines:
+        - "no snmp-server contact {{snmp_contact}}"
+        - "no snmp-server user {{snmp_community}} network-operator"
+        - "no snmp-server host {{snmp_host}} traps version 2 {{snmp_community}}"
+        - "no snmp-server community {{snmp_community}} group network-operator"

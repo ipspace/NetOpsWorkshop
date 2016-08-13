@@ -1,0 +1,11 @@
+---
+- hosts: nxos
+  tasks:
+  - nxos_nxapi: provider="{{cli}}"
+  - nxos_feature: 
+      feature:  "{{item}}" 
+      state:    enabled 
+      provider: "{{cli}}"
+      transport: nxapi
+    with_items: [ ospf ]
+#    with_items: [ ospf,bgp,nxapi,lacp]

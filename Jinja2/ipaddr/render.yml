@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  gather_facts: no
+  connection: local
+  vars_files: 
+  - "{{template}}.yml"
+  tasks:
+  - template: src="{{template}}.j2" dest=/tmp/results.txt

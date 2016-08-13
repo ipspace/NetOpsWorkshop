@@ -1,0 +1,19 @@
+---
+- hosts: localhost
+  tasks:
+  - file: path=arp_table.csv state=absent
+  - file: path=arp_table.csv state=touch
+
+- hosts: nxos
+  tasks:
+  - nxos_command:
+      commands: "show ip arp | json"
+      provider: "{{cli}}"
+    register: result
+  - set_fact: json_result="{{ result.stdout[0] }}"
+  - set_fact: arp_table="{{ json_result.TABLE_vrf.ROW_vrf.TABLE_adj }}"
+  - lineinfile: 
+      dest:   arp_table.csv 
+      regexp: "^{{inventory_hostname}},{{item['intf-out']}},{{item['ip-addr-out']}}"
+      line:   "{{inventory_hostname}},{{item['intf-out']}},{{item['ip-addr-out']}},{{item['mac']}}"
+    with_items: "{{arp_table.ROW_adj}}"

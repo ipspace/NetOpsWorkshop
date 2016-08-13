@@ -1,0 +1,22 @@
+---
+- hosts: ios
+  tasks:
+  - name: "Ping targets from IOS devices"
+    ios_command:
+      commands: ping {{item}}
+      provider: "{{cli}}"
+    with_items: "{{ping_target}}"
+    ignore_errors: yes
+    register: result
+    failed_when: "not '!!' in result.stdout[0]"
+
+- hosts: nxos
+  tasks:
+  - name: "Ping targets from NXOS devices"
+    nxos_command:
+      commands: ping {{item}}
+      provider: "{{cli}}"
+    with_items: "{{ping_target}}"
+    register: result
+    failed_when: "not 'icmp_seq' in result.stdout[0]"
+    ignore_errors: yes

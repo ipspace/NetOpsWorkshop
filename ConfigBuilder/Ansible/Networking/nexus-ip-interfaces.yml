@@ -1,0 +1,26 @@
+---
+- hosts: nxos
+  name:  configure interfaces IP addresses for VLAN interfaces
+  tags:  ip
+  tasks:
+  - nxos_ip_interface:
+      provider: "{{nxapi}}"
+      interface: "Vlan{{item.vlan}}"
+      version:  v4
+      addr: "{{item.ip}}"
+      mask: "{% set v = vlans|selectattr('id','equalto',item.vlan)|first %}{{ v.subnet|ipaddr('prefix') }}"
+    with_items: "{{interfaces}}"
+    when: "{{ item.vlan is defined }}"
+
+- hosts: nxos
+  name:  configure interfaces IP addresses for non-VLAN interfaces
+  tags:  ip
+  tasks:
+  - nxos_ip_interface:
+      provider: "{{nxapi}}"
+      interface: "{{item.interface}}"
+      version:  v4
+      addr: "{{item.prefix|ipaddr('address')}}"
+      mask: "{{item.prefix|ipaddr('prefix') }}"
+    with_items: "{{interfaces}}"
+    when: "{{ item.vlan is not defined }}"

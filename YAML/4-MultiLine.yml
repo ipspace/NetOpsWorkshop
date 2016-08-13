@@ -1,0 +1,10 @@
+# Some long strings
+---
+- |
+  multi-line string
+  indentation indicates it's still the same
+  scalar value.
+  !! Newlines are preserved !!
+- >
+  multi-line string rolled
+  into a single line

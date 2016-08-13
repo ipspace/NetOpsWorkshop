@@ -1,0 +1,9 @@
+---
+- hosts: nxos
+  tasks:
+  - nxos_command:
+      commands: "show ip arp"
+      provider: "{{cli}}"
+      transport: "nxapi"
+    register: result
+  - debug: var=result

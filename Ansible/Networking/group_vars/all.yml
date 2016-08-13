@@ -1,0 +1,19 @@
+---
+ansible_user: cisco
+ansible_ssh_pass: cisco
+
+# Needed for simple configuration demos
+snmp_community: cisco
+snmp_contact: admin@lab.local
+snmp_host: 172.16.1.12
+syslog_host: 172.16.1.12
+
+# Needed for connectivity checks
+ping_target: [ '172.16.1.1', '172.16.1.12', '172.16.1.100', '172.16.1.105' ]
+
+# Needed for interface configuration demos
+vlans:
+  - { id: "1", name: "default" }
+  - { id: "100", name: "mgmt", subnet: "172.16.1.0/24"}
+  - { id: "101", name: "web",  subnet: "192.168.201.0/24"}
+  - { id: "110", name: "db",   subnet: "192.168.202.0/24"}

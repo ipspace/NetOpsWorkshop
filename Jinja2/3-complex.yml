@@ -1,0 +1,3 @@
+---
+hostname: R1
+loopback: { ip: 172.16.0.1, subnet: 255.255.255.255 }

@@ -1,0 +1,17 @@
+---
+- hosts: nxos
+  name:  configure interfaces
+  tags:  interface
+  tasks:
+  - nxos_interface:
+      provider: "{{nxapi}}"
+      interface: "Vlan{{item.vlan}}"
+      admin_state: up
+    with_items: "{{interfaces}}"
+    when: "{{ item.vlan is defined }}"
+  - nxos_interface:
+      provider: "{{nxapi}}"
+      interface: "{{item.interface}}"
+      admin_state: up
+    with_items: "{{interfaces}}"
+    when: "{{ item.interface is defined }}"
