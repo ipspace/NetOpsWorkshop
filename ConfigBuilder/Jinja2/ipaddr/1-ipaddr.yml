@@ -1,6 +1,0 @@
----
-interfaces:
-  - name: GigabitEthernet0/0
-    ip:   172.16.0.1/24
-  - name: GigabitEthernet0/1
-    ip:   172.16.1.1/24

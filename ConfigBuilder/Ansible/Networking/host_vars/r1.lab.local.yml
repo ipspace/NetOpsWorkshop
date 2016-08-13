@@ -1,7 +1,0 @@
----
-# Needed for BGP configuration demos
-bgp:
-  as: 65000
-  neighbors:
-    - { ip: 172.16.1.100, as: 65000 }
-    - { ip: 172.16.1.102, as: 65002 }

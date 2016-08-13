@@ -1,6 +1,0 @@
-r1.lab.local
-s1.lab.local
-
-[all:vars]
-ansible_user=cisco
-ansible_ssh_pass=cisco

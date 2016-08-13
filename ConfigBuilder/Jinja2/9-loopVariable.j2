@@ -1,9 +1,0 @@
-{% for username,password in passwords|dictsort %}
-{% if loop.first %}
-! Local user database
-{% endif %}
-user {{username}} password {{password}}
-{% if loop.last %}
-! No more users
-{% endif %}
-{% endfor %}

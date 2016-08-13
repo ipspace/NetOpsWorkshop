@@ -1,6 +1,0 @@
-# This is a comment
-# Three dashes start a new document
----
-log_dir: logs
-build_dir: build
-domain_name: lab.ipspace.net

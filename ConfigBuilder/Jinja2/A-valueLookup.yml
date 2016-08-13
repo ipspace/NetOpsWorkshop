@@ -1,7 +1,0 @@
----
-vlans:
-  mgmt: { id: 10, description: management }
-  user: { id: 20, description: Users }
-interfaces:
-  fa0/0: { vlan: mgmt }
-  fa0/1: { vlan: user }

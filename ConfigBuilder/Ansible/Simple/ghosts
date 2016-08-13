@@ -1,9 +1,0 @@
-[ios]
-r1.lab.local
-
-[nxos]
-s1.lab.local
-
-[all:vars]
-ansible_user=cisco
-ansible_ssh_pass=cisco

@@ -1,8 +1,0 @@
-logging server {{syslog_host}}
-!
-snmp-server contact {{snmp_contact}}
-snmp-server location {{location}}
-snmp-server user {{snmp_community}} network-operator
-snmp-server host {{snmp_host}} traps version 2 {{snmp_community}}
-snmp-server enable traps link
-snmp-server community {{snmp_community}} group network-operator

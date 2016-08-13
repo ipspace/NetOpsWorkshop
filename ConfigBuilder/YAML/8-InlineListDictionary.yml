@@ -1,6 +1,0 @@
-# Shorter version of
-# router description
----
-hostname: R1
-addresses: [ 192.168.0.1, 192.168.0.2 ]
-loopback: { ip: 192.168.0.1, mask: "/32" }

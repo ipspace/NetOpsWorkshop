@@ -1,9 +1,0 @@
-# Router description
----
-hostname: R1
-loopback_IP: 192.168.0.1
-loopback_subnet: 255.255.255.255
-banner: |
-  The configuration of this router is managed by Ansible.
-
-  Don't change it - your changes will be lost.

@@ -1,7 +1,0 @@
----
-- name: Gather facts through SNMP
-  hosts: ios
-  connection: local
-  gather_facts: no
-  tasks:
-  - snmp_facts: host={{ inventory_hostname }} version=v2c community={{snmp_community}}
