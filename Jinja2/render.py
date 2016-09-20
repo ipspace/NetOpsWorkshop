@@ -10,7 +10,11 @@ from pprint import pprint
 import os
 os.system('cls' if os.name == 'nt' else 'clear')
 
-ENV = Environment(loader=FileSystemLoader('.'))
+trim = True
+if (len(sys.argv) > 2):
+  trim = sys.argv[2] != 'notrim'
+
+ENV = Environment(loader=FileSystemLoader('.'),trim_blocks=trim,lstrip_blocks=trim)
 ENV.filters['bracket_expansion'] = bracket_expansion
 
 filename = re.sub("\.$","",sys.argv[1])

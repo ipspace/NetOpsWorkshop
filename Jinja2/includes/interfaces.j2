@@ -1,0 +1,3 @@
+{% macro ifaddr(intf,mask) %}
+  ip address {{intf.ip}} {{mask|default(intf.mask)|default('255.255.255.0')}}
+{% endmacro %}

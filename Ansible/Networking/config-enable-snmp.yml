@@ -1,0 +1,22 @@
+#
+# This playbook removes SNMP configuration from IOS and Nexus-OS devices
+# 
+# Use it before running config-simple playbook, otherwise you won't notice
+# any difference
+#
+---
+- hosts: ios
+  tasks:
+  - name: "Configure SNMP on IOS devices"
+    ios_config:
+      provider: "{{cli}}"
+      lines:
+        - "snmp-server community {{snmp_community}}"
+
+- hosts: nxos
+  tasks:
+  - name: "Configure SNMP on Nexus OS devices"
+    nxos_config:
+      provider: "{{cli}}"
+      lines:
+        - "snmp-server community {{snmp_community}} group network-operator"

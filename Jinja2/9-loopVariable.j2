@@ -4,6 +4,6 @@
 {% endif %}
 user {{username}} password {{password}}
 {% if loop.last %}
-! No more users
+! Total number of users: {{passwords|length}}
 {% endif %}
 {% endfor %}

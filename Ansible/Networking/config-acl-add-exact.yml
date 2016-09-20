@@ -1,8 +1,8 @@
 #
 # Configure an ACL on Cisco IOS
 #
-# Used to demonstrate how to use BEFORE parameter to erase an ACL
-# if it needs to be changed
+# Second try: let's force the exact match to make sure ACL lines are 
+# in the correct order
 #
 ---
 - hosts: ios
