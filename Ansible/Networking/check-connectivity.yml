@@ -22,3 +22,14 @@
     register: result
     failed_when: "not 'icmp_seq' in result.stdout[0]"
     ignore_errors: yes
+
+- hosts: junos
+  tasks:
+  - name: "Ping targets from Junos devices"
+    junos_command:
+      commands: ping {{item}}
+      provider: "{{netconf}}"
+    with_items: "{{ping_target}}"
+    register: result
+    failed_when: "result.stdout[0]['ping-results']['ping-failure'] is defined"
+    ignore_errors: yes

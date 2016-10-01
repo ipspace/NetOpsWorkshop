@@ -10,3 +10,9 @@
   - nxos_command:
       commands: show ip arp
       provider: "{{cli}}"
+
+- hosts: junos
+  tasks:
+  - junos_command:
+      commands: show arp
+      provider: "{{netconf}}"

@@ -11,3 +11,9 @@
   - nxos_facts: provider="{{cli}}"
     register: facts
   - debug: var=facts
+
+- hosts: junos
+  tasks:
+  - junos_facts: provider="{{netconf}}"
+    register: facts
+  - debug: var=facts
