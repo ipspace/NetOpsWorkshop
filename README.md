@@ -1,7 +1,8 @@
 # Network Automation Workshop - Sources
 
 This repository contains sources for all demos shown during the
-Network Automation workshop:
+(Network Automation workshop)[http://www.ipspace.net/NetAutWS]
+and (Ansible webinar)[http://www.ipspace.net/Ansible]:
 
 ## Subdirectories 
 * YAML: YAML syntax examples (YAML section of the workshop)
@@ -24,7 +25,7 @@ The _Vagrantfile_ in the Git repository contains definitions for Ubuntu VM (nms)
 without the vSRX either comment out the vSRX-specific parts in Vagrantfile or start the VM with **vagrant up nms**.
 
 **Note**: if you're using VMware Fusion or Workstation you _MUST_ specify the Vagrant provider in the **vagrant up** command with the
-**--provider vmware_fusion** or **--provider vmware_workstation** flags.
+**--provider vmware_fusion** or **--provider vmware_workstation** flags the first time you're starting the VM.
 
 ### Adding Juniper vSRX to the examples
 
