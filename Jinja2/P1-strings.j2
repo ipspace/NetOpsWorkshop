@@ -1,0 +1,9 @@
+hostname {{hostname}}
+{% if hostname.find('.') > 0 %}
+ip domain name {{ hostname.partition('.')[2] }}
+{% endif %}
+{% set host = hostname.partition('.')[0] %}
+{% set idx  = host.partition('-')[2] | int %}
+{% if idx %}
+router bgp {{ 64600 + idx }}
+{% endif %} 
