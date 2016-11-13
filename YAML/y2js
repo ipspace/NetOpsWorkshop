@@ -10,14 +10,17 @@ def ly(filename):
     with open(filename) as _:
         return yaml.load(_)
 
-os.system('cls' if os.name == 'nt' else 'clear')
-
 with open(sys.argv[1]) as _:
    text = _.read()
-
-print('### YAML encoding ###')
-print text
-
 body = yaml.load(text);
-print('### JSON encoding ###')
-print json.dumps(body, sort_keys=True, indent=2, separators=(',', ': '))
+
+if len(sys.argv) > 2 and sys.argv[2] == 'mini':
+  print json.dumps(body, separators=(',', ':'))
+else:
+  os.system('cls' if os.name == 'nt' else 'clear')
+
+  print('### YAML encoding ###')
+  print text
+
+  print('### JSON encoding ###')
+  print json.dumps(body, sort_keys=True, indent=2, separators=(', ', ': '))
