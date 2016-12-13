@@ -1,0 +1,20 @@
+#
+# Configure an ACL on Cisco IOS
+#
+# Second try: let's force the exact match to make sure ACL lines are 
+# in the correct order
+#
+---
+- hosts: ios
+  tasks:
+  - name: "Configure ACL on Cisco IOS"
+    ios_config:
+      provider: "{{cli}}"
+      parents:
+        - "ip access-list extended AllowedTraffic"
+      lines:
+        - "permit tcp any eq www any"
+        - "permit tcp any any eq www"
+        - "deny   tcp any any log"
+        - "deny   ip any any log"
+      match: exact

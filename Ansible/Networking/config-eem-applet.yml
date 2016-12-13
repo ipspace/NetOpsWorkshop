@@ -1,0 +1,18 @@
+#
+# This playbook configures an EEM applet that logs all commands
+# executed on a Cisco IOS device
+# 
+# Use it to monitor commands executed by Ansible on Cisco IOS devices
+#
+---
+- hosts: ios
+  tasks:
+  - name: "Configure EEM applet"
+    ios_config:
+      provider: "{{cli}}"
+      parents:
+        - event manager applet CLIlog
+      lines:
+        -  event cli pattern .* sync no skip no
+        -  action 1.0 syslog priority informational msg $_cli_msg
+        -  action 2.0 set _exit_status 1

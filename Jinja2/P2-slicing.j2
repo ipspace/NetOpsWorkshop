@@ -1,0 +1,12 @@
+hostname {{hostname}}
+{% set dot = hostname.find('.') %}
+{% if dot > 0 %}
+! Dot found in hostname at position {{ dot }}
+ip domain name {{ hostname[dot+1:] }}
+  {% set hostname = hostname[:dot] %}
+{% endif %}
+{% set dash = hostname.find('-') %}
+{% if dash > 0 %}
+  {% set idx = hostname[dash:] | int %}
+router bgp {{ 64600 + idx }}
+{% endif %}

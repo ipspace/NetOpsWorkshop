@@ -1,0 +1,17 @@
+---
+- hosts: ios
+  tasks:
+  - ios_command:
+      commands: 
+      - show arp
+      host:     "{{inventory_hostname}}"
+      username: ansible
+      password: ansible
+    name: Execute show arp
+  - ios_command:
+      commands: 
+      - show ip route
+      host:     "{{inventory_hostname}}"
+      username: ansible
+      password: ansible
+    name: Execute show ip route

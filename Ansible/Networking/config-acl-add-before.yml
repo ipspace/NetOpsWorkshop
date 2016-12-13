@@ -1,0 +1,23 @@
+#
+# Configure an ACL on Cisco IOS
+#
+# Final solution:
+# * Use 'exact' match to check that the lines are in correct order
+# * 'before' parameter removes the ACL if it has to be configured
+#
+---
+- hosts: ios
+  tasks:
+  - name: "Configure ACL on Cisco IOS"
+    ios_config:
+      provider: "{{cli}}"
+      parents:
+        - "ip access-list extended AllowedTraffic"
+      lines:
+        - "permit tcp any eq www any"
+        - "permit tcp any any eq www"
+        - "deny   tcp any any log"
+        - "deny   ip any any log"
+      match: exact
+      before:
+        - "no ip access-list extended AllowedTraffic"

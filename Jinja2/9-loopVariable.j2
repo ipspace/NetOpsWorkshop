@@ -1,0 +1,9 @@
+{% for username,password in passwords|dictsort %}
+{% if loop.first %}
+! Local user database
+{% endif %}
+user {{username}} password {{password}}
+{% if loop.last %}
+! Total number of users: {{passwords|length}}
+{% endif %}
+{% endfor %}

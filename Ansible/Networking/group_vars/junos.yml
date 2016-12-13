@@ -1,0 +1,9 @@
+---
+ansible_device_os: junos
+version: 12.1X47
+
+netconf:
+  username:  "junos"
+  password:  "junos1"
+  host:      "{{inventory_hostname}}"
+  transport: netconf

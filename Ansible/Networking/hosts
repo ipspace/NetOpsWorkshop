@@ -1,0 +1,8 @@
+[ios]
+r1.lab.local
+
+[nxos]
+s1.lab.local
+
+[junos]
+srx.lab.local

@@ -1,0 +1,6 @@
+{% for name,list in acls.iteritems() %}
+ip access-list extended {{name}}
+{% for line in list %}
+  {{ line }}
+{% endfor %}
+{% endfor %}

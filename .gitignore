@@ -1,0 +1,5 @@
+# Ignore Vagrant directories
+**/.vagrant/
+
+# Ignore text files in root directory
+*.txt

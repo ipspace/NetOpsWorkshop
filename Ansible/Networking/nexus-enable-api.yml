@@ -1,0 +1,6 @@
+---
+- hosts: nxos
+  tasks:
+  - nxos_nxapi: 
+      provider: "{{cli}}"
+      state:    "{{API|default('started')}}"

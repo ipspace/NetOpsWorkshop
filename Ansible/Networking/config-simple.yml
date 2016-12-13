@@ -1,0 +1,30 @@
+#
+# Configure a few SNMP parameters on Cisco IOS and Nexus OS
+#
+# Run the playbook with --check first to see what will be changed
+# then without --check to do the changes
+#
+# Repeat the process a few times to see how Ansible figures out
+# what needs to be changed
+#
+---
+- hosts: ios
+  tasks:
+  - name: "Configure SNMP on IOS devices"
+    ios_config:
+      provider: "{{cli}}"
+      lines:
+        - "snmp-server community {{snmp_community}} RO"
+        - "snmp-server contact {{snmp_contact}}"
+        - "snmp-server host {{snmp_host}} {{snmp_community}}"
+
+- hosts: nxos
+  tasks:
+  - name: "Configure SNMP on Nexus OS devices"
+    nxos_config:
+      provider: "{{cli}}"
+      lines:
+        - "snmp-server contact {{snmp_contact}}"
+        - "snmp-server user {{snmp_community}} network-operator"
+        - "snmp-server host {{snmp_host}} traps version 2 {{snmp_community}}"
+        - "snmp-server community {{snmp_community}} group network-operator"

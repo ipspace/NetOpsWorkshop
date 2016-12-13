@@ -1,0 +1,8 @@
+{% import 'includes/interfaces.j2' as interfaces %}
+{% include 'includes/loopback.j2'  %}
+!
+interface fa0/0
+{{ interfaces.ifaddr(LAN) }}
+!
+interface serial0/1
+{{ interfaces.ifaddr(WAN.0) }}

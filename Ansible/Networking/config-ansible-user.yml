@@ -1,0 +1,26 @@
+#
+# This playbook configures Ansible user with very limited
+# executing capabilities on Cisco IOS. 
+# 
+# Use it before running command-ios-limited playbook
+#
+---
+- hosts: ios
+  tasks:
+  - name: "Configure Ansible user"
+    ios_config:
+      provider: "{{cli}}"
+      lines:
+        - username ansible password 0 ansible
+        - username ansible privilege 2 view Ansible
+
+  - name: "Configure Ansible view"
+    ios_config:
+      provider: "{{cli}}"
+      parents:
+        - parser view Ansible
+      lines:
+        - secret 5 $1$slTy$cA/Hk/M4F72Msr5BZaHzA/
+        - commands exec include terminal length
+        - commands exec include show arp
+        - commands exec include show version

@@ -1,0 +1,16 @@
+---
+- hosts: all
+  name: Execute SHOW ARP on all network devices and save results
+  vars: 
+    output: printouts
+  vars_files:
+  - "{{ansible_device_os}}/commands.yml"
+
+  tasks:
+  - local_action: file path={{output}} state=directory
+    run_once: true
+  - raw: "{{show_arp}}"
+    register: show
+  - local_action: >
+      copy content={{show.stdout}} 
+           dest={{output}}/{{inventory_hostname}}.arp.txt

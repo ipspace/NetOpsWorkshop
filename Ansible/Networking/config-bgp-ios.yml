@@ -1,0 +1,10 @@
+---
+- hosts: ios
+  tasks:
+  - name: "Configure BGP neighbor on Cisco IOS"
+    ios_config:
+      provider: "{{cli}}"
+      parents:
+        - "router bgp 65000"
+      lines:
+        - "neighbor 172.16.1.101 remote-as 65001"
