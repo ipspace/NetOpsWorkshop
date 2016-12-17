@@ -1,10 +1,11 @@
 # Network Automation Workshop - Sources
 
 This repository contains sources for all demos shown during the
-(Network Automation workshop)[http://www.ipspace.net/NetAutWS]
-and (Ansible webinar)[http://www.ipspace.net/Ansible]:
+[Network Automation workshop](http://www.ipspace.net/NetAutWS)
+and [Ansible webinar](http://www.ipspace.net/Ansible):
 
 ## Subdirectories 
+* Install: Lab installation guidelines
 * YAML: YAML syntax examples (YAML section of the workshop)
 * Jinja2: Sample templates (Jinja2 section of the workshop)
 * Ansible: Ansible playbooks
@@ -12,6 +13,7 @@ and (Ansible webinar)[http://www.ipspace.net/Ansible]:
   * Logging: create SNMP and logging configuration commands for Cisco IOS and Nexus OS
   * SNMPFacts: use SNMP facts in Ansible playbooks
   * Networking: Ansible Networking modules
+* Examples: Further Ansible examples from ansible-examples repository
 
 ## Installation
 
@@ -21,20 +23,21 @@ The networking examples are focused on Cisco IOS and Nexus OS. You can run them 
 
 ### Starting the Ubuntu VM
 
-The _Vagrantfile_ in the Git repository contains definitions for Ubuntu VM (nms) and Juniper vSRX (srx). To start the Ubuntu VM
-without the vSRX either comment out the vSRX-specific parts in Vagrantfile or start the VM with **vagrant up nms**.
+Various _Vagrantfile_ versions in _install_ directory contain different test environments. Select the one you prefer and copy it into _Vagrantfile_ in top directory. 
+
+To start the Ubuntu VM start the VM with **vagrant up nms**. To start the whole test environment use **vagrant up**. Continue the installation process using the instructions in the [_install_ directory] (install).
 
 **Note**: if you're using VMware Fusion or Workstation you _MUST_ specify the Vagrant provider in the **vagrant up** command with the
 **--provider vmware_fusion** or **--provider vmware_workstation** flags the first time you're starting the VM.
 
 ### Adding Juniper vSRX to the examples
 
+* Use _Vagrantfile-SRX_ file
 * Install Vagrant plugins required by Junos vSRX box:
 ```
 $ vagrant install plugin vagrant-host-shell
 $ vagrant install plugin vagrant-junos
 ```
-* Uncomment vSRX definition in Vagrantfile
 * Start the VM with **vagrant up srx** (or **vagrant up srx --provider vmware_fusion**)
 
 <!--

@@ -3,6 +3,7 @@
   connection: local
   gather_facts: no
   tasks:
+  - include_vars: file=hosts.yml name=nodes
   - lineinfile: 
       dest:   /etc/hosts
       regexp: "{{item.key}}"

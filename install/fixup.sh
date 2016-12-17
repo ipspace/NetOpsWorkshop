@@ -2,4 +2,11 @@
 #
 # Run Ansible Fixup playbook to add hostnames to /etc/hosts
 #
-ansible-playbook -i hosts fixup.yml
+echo 'localhost' >/tmp/ansible.hosts
+ansible-playbook -i /tmp/ansible.hosts fixup.yml
+rm /tmp/ansible.hosts
+#
+# Copy ssh configuratio to vagrant home directory
+#
+mkdir -p ~/.ssh
+cp ssh.config ~/.ssh/config

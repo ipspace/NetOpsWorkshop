@@ -15,13 +15,9 @@ sudo apt-get install python-setuptools python-pip git ack-grep
 echo "Install required Python components"
 sudo pip install PyYAML jinja2 httplib2 six bracket-expansion pysnmp netaddr
 #
-# Install PERL CPAN modules
+# Install latest stable Ansible version from Ansible reposityr
 #
-echo "Install PERL modules"
-sudo cpan install YAML File::Slurp Term::Screen
-#
-# Install Junos EZPY
-#
-sudo apt-get install python-dev libxslt1-dev libssl-dev libffi-dev
-sudo apt-get install python-libxml2 python-libxslt1 python-lxml
-pip install junos-eznc jxmlease
+sudo apt-get install software-properties-common
+sudo apt-add-repository ppa:ansible/ansible
+sudo apt-get update
+sudo apt-get install ansible
