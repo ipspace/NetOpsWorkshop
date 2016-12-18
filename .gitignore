@@ -1,5 +1,6 @@
 # Ignore Vagrant directories
-**/.vagrant/
+.vagrant
 /Vagrantfile
+/topology.yml
 # Ignore text files in root directory
 *.txt

@@ -1,0 +1,39 @@
+---
+- name: spine-1
+  box: vEOS-lab-4.17.2F
+  links:
+    - name: mgmt
+      ip:   10.0.5.10
+    - name: S1L1
+    - name: S1L2
+
+- name: spine-2
+  box: vEOS-lab-4.17.2F
+  links:
+    - name: mgmt
+      ip:   10.0.5.11
+    - name: S2L1
+    - name: S2L2
+
+- name: leaf-1
+  box: vEOS-lab-4.17.2F
+  links:
+    - name: mgmt
+      ip:   10.0.5.12
+    - name: S1L1
+    - name: S2L1
+
+- name: leaf-2
+  box: vEOS-lab-4.17.2F
+  links:
+    - name: mgmt
+      ip:   10.0.5.13
+    - name: S1L2
+    - name: S1L2
+
+- name: nms
+  box:  ubuntu/trusty64
+  links:
+    - name: mgmt
+      ip:   10.0.5.2
+
