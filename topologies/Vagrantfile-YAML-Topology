@@ -40,7 +40,8 @@ install_plugins required_plugins
 require 'yaml'
  
 # Read YAML file with box details
-hosts = YAML.load_file('topology.yml')
+vagrant_root = File.dirname(__FILE__)
+hosts = YAML.load_file(vagrant_root + '/topology.yml')
 
 # Lab definition begins here
 Vagrant.configure(VAGRANTFILE_API_VER) do |config|
