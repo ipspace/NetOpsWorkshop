@@ -64,6 +64,20 @@ Vagrant.configure(VAGRANTFILE_API_VER) do |config|
           srv.vm.network "private_network", virtualbox__intnet: link["name"], ip: ipaddr, auto_config: false
         end
       end
+
+      # Automatically configure hostnames on vEOS boxes
+      if /vEOS/.match(host['box'])
+        $script = <<-SCRIPT
+          FastCli -p 15 -c "configure
+          hostname $1"
+        SCRIPT
+
+        srv.vm.provision "shell" do |s|
+          s.inline = $script
+          s.args = host["name"]
+        end
+      end
+
     end
   end
 end
