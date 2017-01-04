@@ -1,0 +1,12 @@
+---
+- name: Enable command logging on Cisco IOS
+  hosts: ios
+  tasks:
+  - name: Enable command logging
+    ios_config: 
+      src:      "enableLogging.cfg"
+      host:     "{{ansible_host}}"
+      username: "{{ansible_user}}"
+      password: "{{ansible_ssh_pass}}"
+    register: results
+  - debug: var=results

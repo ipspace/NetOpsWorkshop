@@ -1,0 +1,14 @@
+---
+- hosts: nxos
+  name:  configure VLANs
+  tags:  VLAN
+  tasks:
+  - nxos_vlan:
+      provider: "{{nxapi}}"
+      vlan_range: "101-199"
+      state:   absent
+  - nxos_vlan:
+      provider: "{{nxapi}}"
+      vlan_id:  201
+      name:     wrong
+      state:    present

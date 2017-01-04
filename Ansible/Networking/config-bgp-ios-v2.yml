@@ -1,0 +1,26 @@
+---
+- hosts: ios
+  vars:
+  - bgp: 65000
+  tasks:
+  - name: "Get BGP AS number"
+    ios_command:
+      provider: "{{cli}}"
+      commands: 
+      - "show ip protocol summary | include bgp"
+    register: protocols
+  - name: "Check BGP AS Number"
+    block:
+    - set_fact: asn={{protocols.stdout[0]|regex_findall("bgp (\d+)")|join}}
+    - fail: 
+       msg: "BGP AS number mismatch: expected {{bgp}} got {{asn}}"
+      when: "{{asn}} != {{bgp}}"
+    when: protocols.stdout[0]
+
+  - name: "Configure BGP neighbor on Cisco IOS"
+    ios_config:
+      provider: "{{cli}}"
+      parents:
+        - "router bgp {{bgp}}"
+      lines:
+        - "neighbor 172.16.1.101 remote-as 65001"
