@@ -3,4 +3,4 @@
   tasks:
   - nxos_nxapi: 
       provider: "{{cli}}"
-      state:    "{{API|default('started')}}"
+      state:    "{{API|default('present')}}"

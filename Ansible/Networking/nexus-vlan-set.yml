@@ -4,7 +4,7 @@
   tags:  VLAN
   tasks:
   - nxos_vlan:
-      provider: "{{nxapi}}"
+      provider: "{{cli}}"
       vlan_id: "{{item.id}}" 
       state:   "{{item.state | default('present') }}"
       admin_state: "{{ item.admin | default('up') }}"

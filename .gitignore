@@ -4,3 +4,6 @@
 /topology.yml
 # Ignore text files in root directory
 *.txt
+
+# Ignore Ansible retry files 
+*.retry

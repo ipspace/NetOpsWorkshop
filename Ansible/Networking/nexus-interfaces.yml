@@ -4,13 +4,13 @@
   tags:  interface
   tasks:
   - nxos_interface:
-      provider: "{{nxapi}}"
+      provider: "{{cli}}"
       interface: "Vlan{{item.vlan}}"
       admin_state: up
     with_items: "{{interfaces}}"
     when: "{{ item.vlan is defined }}"
   - nxos_interface:
-      provider: "{{nxapi}}"
+      provider: "{{cli}}"
       interface: "{{item.interface}}"
       admin_state: up
     with_items: "{{interfaces}}"

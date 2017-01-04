@@ -23,5 +23,5 @@
       lines:
         - "no snmp-server contact {{snmp_contact}}"
         - "no snmp-server user {{snmp_community}} network-operator"
-        - "no snmp-server host {{snmp_host}} traps version 2 {{snmp_community}}"
+        - "no snmp-server host {{snmp_host}} {{snmp_community}}"
         - "no snmp-server community {{snmp_community}} group network-operator"
