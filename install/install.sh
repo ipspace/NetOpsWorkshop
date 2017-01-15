@@ -8,7 +8,7 @@ sudo apt-get update
 # Install missing packages
 #
 echo "Install missing packages"
-sudo apt-get install python-setuptools python-pip git ack-grep
+sudo apt-get install python-setuptools python-pip git ack-grep jq
 #
 # Install Python components
 #

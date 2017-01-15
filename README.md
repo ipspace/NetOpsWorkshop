@@ -35,8 +35,8 @@ To start the Ubuntu VM start the VM with **vagrant up nms**. To start the whole 
 * Use _Vagrantfile-SRX_ file
 * Install Vagrant plugins required by Junos vSRX box:
 ```
-$ vagrant install plugin vagrant-host-shell
-$ vagrant install plugin vagrant-junos
+$ vagrant plugin install vagrant-host-shell
+$ vagrant plugin install vagrant-junos
 ```
 * Start the VM with **vagrant up srx** (or **vagrant up srx --provider vmware_fusion**)
 
