@@ -3,9 +3,12 @@
   gather_facts: no
   tasks:
   - raw: "show arp"
-    register: show
+    register: show_ios
     when: "'ios' in group_names"
   - raw: "show ip arp"
-    register: show
+    register: show_nxos
     when: "'nxos' in group_names"
-  - debug: var=show.stdout_lines
+  - debug: 
+      var: |
+        show_ios.stdout_lines|
+          default(show_nxos.stdout_lines)
