@@ -1,5 +1,6 @@
 # Ignore Vagrant directories
 .vagrant
+.DS_Store
 /Vagrantfile
 /topology.yml
 # Ignore text files in root directory

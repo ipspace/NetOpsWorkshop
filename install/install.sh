@@ -15,6 +15,9 @@ sudo apt-get install python-setuptools python-pip git ack-grep jq
 echo "Install required Python components"
 sudo pip install PyYAML jinja2 httplib2 six bracket-expansion pysnmp netaddr
 #
+echo "Install optional Python components"
+sudo pip install yamllint
+#
 # Install latest stable Ansible version from Ansible reposityr
 #
 sudo apt-get install software-properties-common

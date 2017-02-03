@@ -1,0 +1,10 @@
+#!/usr/bin/perl
+#
+use XML::LibXML;
+use XML::LibXML::PrettyPrint;
+
+binmode STDIN;
+my $doc = XML::LibXML->load_xml(IO => STDIN);
+my $pp  = XML::LibXML::PrettyPrint->new(indent_string => "  ");
+$pp->pretty_print($doc);
+print $doc->toString;
