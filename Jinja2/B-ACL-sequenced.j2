@@ -1,6 +1,14 @@
-{% for name,list in acls.iteritems() %}
+{#
+  This example no longer works in Jinja2 2.9 and later.
+
+  Jinja2 changed variable scoping rules within for loops - prior to
+  release 2.9 the variable set within a for loop retained their
+  value across loop iterations. Starting with release 2.9 the 
+  variables are reinitialized at everz iteration of the loop.
+#}
+{% for name,list in acls.items() %}
 ip access-list extended {{name}}
-{% set count = 0 %}
+{% set count = 10 %}
 {% for line in list %}
   {% set count = count + 10 %}
   {{ count }} {{ line }}
