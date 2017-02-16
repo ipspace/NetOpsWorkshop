@@ -10,6 +10,6 @@
 ! -- sorted usernames: passwords|sort|join(",")
 ! Sorted username: {{passwords|sort|join(",")}}
 !
-{% for username,password in passwords.iteritems() %}
+{% for username,password in passwords.items() %}
 user {{username}} password {{password}}
 {% endfor %}

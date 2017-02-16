@@ -19,13 +19,13 @@ ENV.filters['bracket_expansion'] = bracket_expansion
 
 filename = re.sub("\.$","",sys.argv[1])
 
-print '--- Reading YAML file '+filename+'.yml ---' 
+print ('--- Reading YAML file '+filename+'.yml ---')
 with open(filename + '.yml') as _: yamldict = yaml.load(_)
 
-print '--- YAML dictionary in '+filename+'.yml ---' 
+print ('--- YAML dictionary in '+filename+'.yml ---')
 pprint(yamldict)
 print
 
-print '--- Rendering template '+filename+'.j2 ---' 
+print ('--- Rendering template '+filename+'.j2 ---') 
 template = ENV.get_template(filename + ".j2")
 print(template.render(**yamldict))

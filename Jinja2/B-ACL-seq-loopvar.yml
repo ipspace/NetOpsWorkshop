@@ -1,0 +1,9 @@
+---
+acls:
+  noweb:
+    - deny tcp any any eq 80 log
+    - deny tcp any eq 80 any log
+    - permit ip any any
+  noudp:
+    - deny udp any any log
+    - permit tcp any any
