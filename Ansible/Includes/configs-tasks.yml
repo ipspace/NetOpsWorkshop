@@ -1,0 +1,7 @@
+---
+- include: setup-directory.yml
+  name:    set up working directories
+
+- hosts: all
+  tasks:
+  - include: tasks/{{ansible_os}}-config.yml
