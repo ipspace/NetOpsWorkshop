@@ -1,0 +1,15 @@
+---
+- hosts: all
+  vars:
+    configs: configs/{{inventory_hostname}}
+
+  pre_tasks:
+  - file: path={{configs}} state=directory
+
+  roles:
+  - ospf_router
+
+  post_tasks:
+  - assemble:
+      src: "{{configs}}"
+      dest: "configs/{{inventory_hostname}}.cfg"
