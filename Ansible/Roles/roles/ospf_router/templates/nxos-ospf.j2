@@ -1,0 +1,7 @@
+!
+router ospf 1
+{% for i in interfaces %}
+!
+interface {{i}}
+ ip ospf 1 area 0
+{% endfor %}

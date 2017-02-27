@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  name: Create directory
+  tasks:
+  - file: path=configs state=absent
+    when: cleanup is defined  
+  - file: path=configs state=directory
