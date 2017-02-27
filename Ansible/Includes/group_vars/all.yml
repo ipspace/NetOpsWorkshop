@@ -1,0 +1,13 @@
+---
+ansible_user: cisco
+ansible_ssh_pass: cisco
+snmp_community: cisco
+snmp_contact: admin@lab.local
+snmp_host: 172.16.1.12
+syslog_host: 172.16.1.12
+
+cli:
+  username:  "{{ansible_user}}"
+  password:  "{{ansible_password}}"
+  host:      "{{inventory_hostname}}"
+  transport: cli
