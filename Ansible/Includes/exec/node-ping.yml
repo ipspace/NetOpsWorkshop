@@ -1,0 +1,9 @@
+---
+- name: "Try to reach managed device {{item}}"
+  command: /bin/ping -q -c 3 -A {{item}}
+  ignore_errors: true
+  register: result
+
+- assert:
+    that: result|success
+    msg:  Cannot ping {{item}}
