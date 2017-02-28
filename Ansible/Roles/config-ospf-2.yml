@@ -1,0 +1,9 @@
+---
+- include: setup-directory.yml
+  name:    set up working directories
+
+- hosts: all
+  vars:
+    configs: configs
+  roles:
+  - ospf_router
