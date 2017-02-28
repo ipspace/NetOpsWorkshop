@@ -1,0 +1,21 @@
+---
+- name: Test list plugin
+  hosts: localhost
+  connection: local
+  tasks:
+  - assert:
+      that: "'Cisco IOS'|device_type == 'ios'"
+      msg:  Failed to recognize Cisco IOS
+  - assert:
+      that: "'NX-OS'|device_type == 'nx-os'"
+      msg:  Failed to recognize Cisco Nexus OS
+  - assert:
+      that: "'abcd'|device_type('unknown') == 'unknown'"
+      msg:  failed to process default device type
+  - set_fact: 
+      x: "{{'aaa'|device_type}}"
+    ignore_errors: true
+    register: result
+  - assert:
+      that: result|failed
+      msg:  Failed to crash on unknown device type with no default

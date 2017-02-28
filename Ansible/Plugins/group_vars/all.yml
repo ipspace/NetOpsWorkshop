@@ -1,0 +1,6 @@
+---
+cli:
+  username:  "cisco"
+  password:  "cisco"
+  host:      "{{inventory_hostname}}"
+  transport: cli

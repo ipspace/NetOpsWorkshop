@@ -1,0 +1,11 @@
+---
+- name: Set network device type
+  hosts: all
+  tasks:
+  - ios_command: 
+      commands: show version 
+      provider: '{{cli}}'
+    register: result
+  - set_fact:
+      ansible_os: "{{result.stdout[0]|device_type}}"
+  - debug: msg="Device type for {{inventory_hostname}} set to {{ansible_os}}"
