@@ -12,4 +12,4 @@
 
 - assert:
     that: "'!!' in result.stdout[0]"
-    msg:  "Cannot ping {{item}} from {{ansible_host}}"
+    msg:  "Cannot ping {{item}} from {{ansible_host}}"

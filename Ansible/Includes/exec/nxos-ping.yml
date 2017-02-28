@@ -1,5 +1,5 @@
 ---
-- name: "Ping {{item}} from IOS devices"
+- name: "Ping {{item}} from NX-OS devices"
   nxos_command:
     commands: ping {{item}}
     provider: "{{cli}}"
@@ -12,4 +12,4 @@
 
 - assert:
     that: "'icmp_seq' in result.stdout[0]"
-    msg:  "Cannot ping {{item}} from {{ansible_host}}"
+    msg:  "Cannot ping {{item}} from {{ansible_host}}"

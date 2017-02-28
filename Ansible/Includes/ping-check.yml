@@ -1,8 +1,13 @@
 ---
+- hosts: localhost
+  tasks:
+  - include: exec/node-ping.yml
+    with_items: "{{groups['all']}}"
+
 - hosts: all
   name:  ping specified destinations from all hosts
   tasks:
   - name: Read the list of targets
     include_vars: file=ping-targets.yml
   - include: exec/{{ansible_os}}-ping.yml
-    with_items: "{{targets}}"
+    with_items: targets
