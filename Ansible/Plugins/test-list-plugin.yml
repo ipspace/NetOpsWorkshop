@@ -1,0 +1,27 @@
+---
+- name: Test list plugin
+  hosts: localhost
+  connection: local
+  tasks:
+  - assert:
+      that: "[1,2,3]|append(4) is equalto([1,2,3,4])"
+      msg:  Append to list failed
+  - assert:
+      that: "[1,2,3]|append(4,5) is equalto([1,2,3,4,5])"
+      msg:  Append multiple elements to list failed
+  - assert:
+      that: "[]|append(4) is equalto([4])"
+      msg:  Append to empty list failed
+  - assert:
+      that: "[]|append(4,5) is equalto([4,5])"
+      msg:  Append multiple elements to empty list failed
+  - assert:
+      that: "[1,2]|append([3,4]) is equalto([1,2,3,4])"
+      msg:  Appending a list to a list should result in a single list
+  - set_fact: 
+      x: "{{'aaa'|append(4)}}"
+    ignore_errors: true
+    register: result
+  - assert:
+      that: result|failed
+      msg:  Append to string should fail
