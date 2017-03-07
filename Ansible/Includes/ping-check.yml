@@ -10,4 +10,4 @@
   - name: Read the list of targets
     include_vars: file=ping-targets.yml
   - include: exec/{{ansible_os}}-ping.yml
-    with_items: targets
+    with_items: "{{targets}}"
