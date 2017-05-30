@@ -6,5 +6,6 @@
 # Ignore text files in root directory
 *.txt
 
-# Ignore Ansible retry files 
+# Ignore Ansible retry and log files 
 *.retry
+ansible.log
