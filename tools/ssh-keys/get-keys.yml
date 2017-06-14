@@ -15,6 +15,7 @@
 
     - file: path={{known_hosts}} state=touch
       run_once: true
+      changed_when: false
       
     - blockinfile:
         dest: "{{known_hosts}}"
