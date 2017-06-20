@@ -6,7 +6,7 @@ echo 'localhost' >/tmp/ansible.hosts
 ansible-playbook -i /tmp/ansible.hosts fixup.yml
 rm /tmp/ansible.hosts
 #
-# Copy ssh configuratio to vagrant home directory
+# Copy ssh configuration to vagrant home directory
 #
 mkdir -p ~/.ssh
 cp ssh.config ~/.ssh/config
