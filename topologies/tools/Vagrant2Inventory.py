@@ -18,10 +18,11 @@ def usage():
   print " -u: SSH username (default: vagrant)"
   print " -p: SSH password (default: vagrant)"
   print " -v: verbose"
+  print " --vm: create an inventory for VM-based setup (using 10.0.2.2 IP address in VirtualBox)"
 
 def getOptions():
   try:
-    options, args = getopt.getopt(sys.argv[1:], "a:s:u:p:v", ["address=", "skip=", "username=", "password="])
+    options, args = getopt.getopt(sys.argv[1:], "a:s:u:p:v", ["address=", "skip=", "username=", "password=","vm"])
   except getopt.GetoptError as err:
     # print help information and exit:
     print str(err)  # will print something like "option -a not recognized"
@@ -41,6 +42,8 @@ def getOptions():
       opts['skip'] = arg
     elif opt == "-v":
       opts['verbose'] = True
+    elif opt == "--vm":
+      opts['address'] = '10.0.2.2'
     elif opt == "-h": 
       usage()
       sys.exit(0)
