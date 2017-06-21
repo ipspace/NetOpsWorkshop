@@ -16,7 +16,7 @@ Vagrant.configure(2) do |config|
   config.vm.define "srx" do |srx|
     srx.vm.box = "juniper/ffp-12.1X47-D20.7"
     srx.vm.host_name = "srx"
-    srx.vm.network "private_network", ip: "172.16.1.67"
+    srx.vm.network "private_network", ip: "172.16.1.13"
 
     srx.vm.provider "vmware_fusion" do |v|
       v.vmx["memsize"] = "2048"
