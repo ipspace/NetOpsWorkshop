@@ -65,6 +65,12 @@ Vagrant.configure(VAGRANTFILE_API_VER) do |config|
         end
       end
 
+      if host.key?("memory")
+        srv.vm.provider "virtualbox" do |v|
+          v.memory = host["memory"]
+        end
+      end
+
       # Automatically configure hostnames on vEOS boxes
       if /vEOS/.match(host['box'])
         $script = <<-SCRIPT

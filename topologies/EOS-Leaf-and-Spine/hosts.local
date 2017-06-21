@@ -1,0 +1,4 @@
+spine-1 ansible_host=127.0.0.1 ansible_port=20001  ansible_user=admin ansible_ssh_pass=admin
+spine-2 ansible_host=127.0.0.1 ansible_port=20002  ansible_user=admin ansible_ssh_pass=admin
+leaf-1  ansible_host=127.0.0.1 ansible_port=20003  ansible_user=admin ansible_ssh_pass=admin
+leaf-2  ansible_host=127.0.0.1 ansible_port=20004  ansible_user=admin ansible_ssh_pass=admin
