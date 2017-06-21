@@ -12,3 +12,9 @@ Use this *Vagrantfile* when running Ansible in a Vagrant-connected VM with VIRL.
 Read also:
 
 * [Use Ansible playbooks with Cisco VIRL](http://automation.ipspace.net/Example:Using_Ansible_Playbooks_with_Cisco_VIRL)
+
+## More information
+
+* [Ansible for Networking Engineers](http://www.ipspace.net/Ansible_for_Networking_Engineers) online course ([contents](https://my.ipspace.net/bin/list?id=AnsibleOC))
+* [Building Network Automation Solutions](http://www.ipspace.net/Building_Network_Automation_Solutions) online course ([contents](https://my.ipspace.net/bin/list?id=NetAutSol))
+

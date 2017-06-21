@@ -30,20 +30,10 @@ To start the Ubuntu VM start the VM with **vagrant up nms**. To start the whole 
 **Note**: if you're using VMware Fusion or Workstation you _MUST_ specify the Vagrant provider in the **vagrant up** command with the
 **--provider vmware_fusion** or **--provider vmware_workstation** flags the first time you're starting the VM.
 
-### Adding Juniper vSRX to the examples
-
-* Use _Vagrantfile-SRX_ file
-* Install Vagrant plugins required by Junos vSRX box:
-```
-$ vagrant plugin install vagrant-host-shell
-$ vagrant plugin install vagrant-junos
-```
-* Start the VM with **vagrant up srx** (or **vagrant up srx --provider vmware_fusion**)
-
-<!--
-* Cisco VIRL running a vIOS (_R1_) and a Nexus OS (_S1_) instances connected to external flat network
-* Ubuntu server (_nms_) running _Ansible_. _nms_ is connected to the same subnet as _R1_ and _S1_.
--->
 ## Usage
 
-Download, explore & enjoy... and when you discover you want to know more, [register for the network automation workshop](http://ipspace.net/NetOps).
+Download, explore & enjoy... and when you discover you want to know more, register for the:
+
+* [Ansible for Networking Engineers](http://www.ipspace.net/Ansible_for_Networking_Engineers) online course ([contents](https://my.ipspace.net/bin/list?id=AnsibleOC)) or
+* [Building Network Automation Solutions](http://www.ipspace.net/Building_Network_Automation_Solutions) online course ([contents](https://my.ipspace.net/bin/list?id=NetAutSol))
+

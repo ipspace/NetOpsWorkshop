@@ -15,3 +15,9 @@ Notes:
 * Remove **nms** virtual machine from *topology.yml* if you want to run Ansible on your host machine.
 * Use the *install.sh* script to install Ansible and NAPALM on **nms**. More details in [this document](https://my.ipspace.net/bin/get?doc=ca659efe-f437-11e6-b42b-005056880254).
 * Use the *hosts.vm* inventory if you're running Ansible in **nms** virtual machine or *hosts.local* inventory if you're running Ansible on the host.
+
+## More information
+
+* [Ansible for Networking Engineers](http://www.ipspace.net/Ansible_for_Networking_Engineers) online course ([contents](https://my.ipspace.net/bin/list?id=AnsibleOC))
+* [Building Network Automation Solutions](http://www.ipspace.net/Building_Network_Automation_Solutions) online course ([contents](https://my.ipspace.net/bin/list?id=NetAutSol))
+
