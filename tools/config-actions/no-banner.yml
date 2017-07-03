@@ -1,0 +1,14 @@
+#
+# Disable banners
+#
+---
+- hosts: all
+  tasks:
+  - name: Disable all banners on Cisco IOS devices
+    ios_config:
+      lines:
+      - no banner exec
+      - no banner incoming
+      - no banner login
+      authorize: yes
+    when: ansible_os == 'ios'
