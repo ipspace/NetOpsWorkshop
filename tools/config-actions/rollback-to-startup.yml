@@ -1,0 +1,15 @@
+#
+# Replace running config with startup config on Cisco IOS
+#
+---
+- hosts: all
+  tasks:
+  - ios_config:
+      authorize: yes
+      lines:
+      - alias exec replace configure replace
+  - ios_command:
+      commands:
+        - replace nvram:startup-config force
+      authorize: yes
+      timeout: 30

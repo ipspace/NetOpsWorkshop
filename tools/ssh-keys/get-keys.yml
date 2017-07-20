@@ -1,3 +1,4 @@
+#!/usr/bin/env ansible-playbook
 #
 # Get SSH keys from lab devices described in Ansible inventory
 #
