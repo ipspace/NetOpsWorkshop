@@ -1,0 +1,73 @@
+output="recode"
+resize=""
+
+while test $# -gt 0; do
+  case "$1" in
+    --480)
+            resize="-vf scale=-1:480"
+            shift
+            ;;
+    --768)
+            resize="-vf scale=-1:768"
+            shift
+            ;;
+    --output)
+            shift
+            if test $# -gt 0; then
+              export output=$1
+            else
+              echo "no output dir specified"
+              exit 1
+            fi
+            shift
+            ;;
+    -h|--help|-*)
+            script=`basename $0`
+            echo "$script - resize/recode a video"
+            echo " "
+            echo "$script [options] files"
+            echo " "
+            echo "options:"
+            echo "--480     resize to 480p"
+            echo "--output  Output directory"
+            exit 0
+            ;;
+    *)
+            break
+            ;;
+  esac
+done
+
+if test $# -eq 0; then
+  echo "Specify options and a list of files, use -h for help"
+  exit
+fi
+
+echo "Options"
+echo "======="
+echo "Resizing: $resize"
+echo "Output directory: $output"
+
+if ! [ -d "$output" ]; then
+  mkdir "$output"
+fi
+for var in "$@"
+do
+  file_dir=`dirname "$var"`
+  file_name_ext=`basename "$var"`
+  file_name=${file_name_ext%.*}
+  file_ext=${file_name_ext#$file_name.}
+
+  echo "Converting"
+  echo "=========="
+  echo "input: $var"
+  echo "output: ${output}/${file_name}.mp4"
+  echo ""
+  ffmpeg -i "$var" \
+    -loglevel warning \
+    -strict -2 $resize \
+    -c:v libx264 -preset slower -crf 20 \
+    -profile:v baseline -level 3.1 \
+    -c:a copy -flags +global_header \
+    -r 15 "${output}/${file_name}.mp4"
+done
