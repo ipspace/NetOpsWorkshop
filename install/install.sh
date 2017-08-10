@@ -18,7 +18,7 @@ sudo apt-get -qq install python-setuptools python-pip git ack-grep jq tree
 echo "Install Ansible dependencies"
 sudo apt-get -qq install build-essential
 echo "Installing NAPALM dependencies"
-sudo apt-get -qq install libxslt1-dev libssl-dev libffi-dev python-dev python-cffi
+sudo apt-get -qq install libxslt1-dev libssl-dev libffi-dev python-dev python-cffi python-lxml
 #
 # Install Python components
 #
