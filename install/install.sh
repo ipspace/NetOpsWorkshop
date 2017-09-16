@@ -3,6 +3,19 @@
 # Remove reference to obsolete PuppetLabs repository
 # Update to latest release
 #
+cat <<EOM
+Ansible/NAPALM installation script
+==================================
+This script updates your system, installs additional APT and PIP
+packages, and installs Ansible with NAPALM.
+
+The script was tested on Ubuntu 14.04 but probably works on 16.04 as well.
+
+NOTE: the script is set to abort on first error. If the installation
+completed you're probably OK even though you might have seen errors
+during the installation process.
+==================================
+EOM
 set -e
 echo "Update installed software to latest release (might take a long time)"
 sudo rm -fr /etc/apt/sources.list.d/puppetlabs.list
@@ -24,7 +37,9 @@ sudo apt-get -qq install libxslt1-dev libssl-dev libffi-dev python-dev python-cf
 #
 echo "Install baseline Python components"
 # sudo apt-get -qq install python-yaml python-httplib2 python-pysnmp4
+sudo pip install -q --upgrade urllib3[secure]
 sudo pip install -q pyyaml httplib2 pysnmp
+echo "NOTE: Jinja2 installation generates compiler errors. Ignore them"
 sudo pip install -q jinja2 six bracket-expansion netaddr
 #
 echo "Install Ansible Python dependencies"
@@ -47,3 +62,6 @@ sudo pip install -q ansible
 echo "Installing NAPALM and Junos EZPY"
 sudo pip install -q napalm-eos napalm-ios napalm-junos napalm-nxos napalm-iosxr
 sudo pip install -q --no-deps napalm
+echo "Installation complete. Let's test Ansible version"
+echo
+ansible-playbook --version
