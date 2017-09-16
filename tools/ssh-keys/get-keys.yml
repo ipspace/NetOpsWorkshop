@@ -14,10 +14,14 @@
       register: "host_keys"
       changed_when: false
 
+    - assert:
+        that: host_keys.stdout
+        msg:  "We did not get SSH key for {{inventory_hostname}}"
+
     - file: path={{known_hosts}} state=touch
       run_once: true
       changed_when: false
-      
+
     - blockinfile:
         dest: "{{known_hosts}}"
         marker: "# {mark} This part managed by Ansible"
@@ -30,5 +34,6 @@
           {%  else %}
           {{ hostvars[h].host_keys.stdout }}
           {%  endif %}
-          {% endfor %} 
+          {% endfor %}
       run_once: true
+      delegate_to: localhost
