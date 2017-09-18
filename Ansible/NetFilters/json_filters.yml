@@ -1,0 +1,42 @@
+---
+- name: Retrieve BGP neighbor information
+  hosts: all
+  roles:
+  - napalm
+  tasks:
+  - napalm_get_facts:
+      hostname={{ansible_host|default(inventory_hostname)}}
+      username={{ansible_user}}
+      password={{ansible_ssh_pass}}
+      dev_os={{ansible_os}}
+      filter='bgp_neighbors'
+    tags: [ always ]
+
+  - include: ../../tools/include/snapshot.yml
+    when: snapshot is defined
+
+  - name: T1
+    meta: noop
+
+  - name: Get list of BGP peers from facts dictionary
+    set_fact: bgp_peer_list={{napalm_bgp_neighbors.global.peers|to_list}}
+
+  - name: Get list of EBGP peers (as dictionary)
+    set_fact: ebgp_peers={{bgp_peer_list|json_query('[? local_as != remote_as]')}}
+
+  - name: Get list of EBGP peer IDs
+    set_fact: ebgp_peer_id={{bgp_peer_list|json_query('[? local_as != remote_as].id')}}
+
+  - name: Get list of EBGP peer IDs and prefix count
+    set_fact: ebgp_peer_pfx={{bgp_peer_list|json_query('[? local_as != remote_as].[id, address_family.ipv4.accepted_prefixes]')}}
+
+  - name: Get list of EBGP peer IDs and prefix count as object
+    set_fact:
+      ebgp_peer_dict: |
+        {{bgp_peer_list|json_query('
+          [? local_as != remote_as]
+            .{neighbor: id, prefixes: address_family.ipv4.accepted_prefixes}
+          ')}}
+
+#  - debug:
+#      msg={{ bgp_peer_list|json_query('[? !is_up]') }}
