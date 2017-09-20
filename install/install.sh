@@ -50,7 +50,7 @@ echo ".. pynacl"
 sudo pip install -q pynacl
 #
 echo "Install optional Python components"
-sudo pip install -q yamllint
+sudo pip install -q yamllint textfsm jmespath
 #
 # Install latest Ansible version with pip
 #
