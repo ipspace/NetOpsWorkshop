@@ -24,7 +24,7 @@ sudo apt-get -qq update
 # Install missing packages
 #
 echo "Install missing packages (also a pretty long operation)"
-sudo apt-get -qq install python-setuptools python-pip git ack-grep jq tree
+sudo apt-get -qq install python-setuptools python-pip git ack-grep jq tree sshpass colordiff
 #
 # Install Ansible and NAPALM dependencies
 #
