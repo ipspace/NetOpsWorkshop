@@ -1,0 +1,21 @@
+---
+- name: Retrieve BGP neighbor information
+  hosts: all
+  roles:
+  - napalm
+  vars:
+  - filters: cli_filters/
+  tasks:
+  - ios_command:
+      commands: 
+      - "{{ show_command | default('show ip ospf neighbor') }}"
+    register: ospf_printout
+
+  - include: ../../tools/include/snapshot.yml
+    when: snapshot is defined
+
+  - name: T1
+    debug: msg={{ospf_printout.stdout}}
+
+  - set_fact: filter={{ filters + cli_filter|default('ios_ospf_neighbor.yml') }}
+  - debug: msg={{ ospf_printout.stdout[0] | parse_cli(filter) }}

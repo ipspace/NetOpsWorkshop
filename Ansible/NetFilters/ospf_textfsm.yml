@@ -1,5 +1,5 @@
 ---
-- name: Retrieve BGP neighbor information
+- name: Retrieve OSPF neighbor information
   hosts: all
   roles:
   - napalm
@@ -8,10 +8,5 @@
       commands: [ show ip ospf neighbor ]
     register: ospf_printout
 
-  - include: ../../tools/include/snapshot.yml
-    when: snapshot is defined
-
-  - name: T1
-    debug: msg={{ospf_printout.stdout}}
-
+  - debug: msg={{ospf_printout.stdout}}
   - debug: msg={{ ospf_printout.stdout[0] | parse_cli_textfsm('textfsm/cisco_ios_show_ip_ospf_neighbor.template') }}
