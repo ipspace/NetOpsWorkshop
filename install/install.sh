@@ -24,28 +24,29 @@ sudo apt-get -qq update
 # Install missing packages
 #
 echo "Install missing packages (also a pretty long operation)"
-sudo apt-get -qq install python-setuptools python-pip git ack-grep jq tree sshpass colordiff
+sudo apt-get -qq install python-setuptools python-pip
+echo "Install nice-to-have packages"
+sudo apt-get -qq install git ack-grep jq tree sshpass colordiff
 #
 # Install Ansible and NAPALM dependencies
 #
-echo "Install Ansible dependencies"
+echo "Install Python development and build modules"
 sudo apt-get -qq install build-essential
+sudo apt-get -qq install python-dev
+sudo apt-get -qq install libffi-dev
 echo "Installing NAPALM dependencies"
-sudo apt-get -qq install libxslt1-dev libssl-dev libffi-dev python-dev python-cffi python-lxml
+sudo apt-get -qq install libxslt1-dev libssl-dev python-lxml
 #
 # Install Python components
 #
 echo "Install baseline Python components"
-# sudo apt-get -qq install python-yaml python-httplib2 python-pysnmp4
+sudo pip install -q --upgrade cffi
 sudo pip install -q --upgrade urllib3[secure]
 sudo pip install -q pyyaml httplib2 pysnmp
 echo "NOTE: Jinja2 installation generates compiler errors. Ignore them"
 sudo pip install -q jinja2 six bracket-expansion netaddr
 #
 echo "Install Ansible Python dependencies"
-echo ".. cffi"
-sudo pip install -q cffi
-sudo pip install -q --upgrade cffi
 echo ".. pynacl"
 sudo pip install -q pynacl
 #
