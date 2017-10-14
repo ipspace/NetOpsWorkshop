@@ -1,3 +1,4 @@
+#!/usr/bin/env ansible-playbook
 #
 # Enable SCP on Cisco IOS
 #

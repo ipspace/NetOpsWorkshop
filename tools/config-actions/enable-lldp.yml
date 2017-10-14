@@ -1,0 +1,23 @@
+#!/usr/bin/env ansible-playbook
+#
+# Enable LLDP on Cisco IOS
+#
+---
+- hosts: all
+  tasks:
+  - name: Enable LLDP on Cisco IOS devices
+    ios_config:
+      lines:
+      - lldp run
+      - lldp timer 5
+      - lldp holdtime 15
+      authorize: yes
+  - name: Disable LLDP on GigabitEthernet 0/0
+    ios_config:
+      parents:
+      - interface GigabitEthernet0/0
+      lines:
+      - no lldp transmit
+      - no lldp receive
+      authorize: yes
+    tags: [ virl ]
