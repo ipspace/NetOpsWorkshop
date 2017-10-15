@@ -10,7 +10,11 @@ Setup:
     cd inventory
     rm -fr ../results/
     ansible-playbook report.yml
-    export ANSIBLE_STDOUT_CALLBACK=selective; ansible-playbook report.yml
+
+    export ANSIBLE_STDOUT_CALLBACK=selective
+    export ANSIBLE_CALLBACK_PLUGINS=`pwd`/../Plugins/callback/
+    export ANSIBLE_SELECTIVE_LINE_LENGTH=80
+    ansible-playbook report.yml
 
 * Inspect ../results/E1.yml
 * cat ../results/inventory.csv
