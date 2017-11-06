@@ -30,3 +30,16 @@
 
 ## Using Ansible debugger
 
+    ansible-playbook -l E1 Debug-LLDP-test.yml
+
+## Creating a snapshot
+
+    ansible-playbook Debug-LLDP-to-Graph.yml
+    more snap_data/hosts
+    more snap_data/host_vars/E1.yml
+
+## Running a playbook from snapshot
+
+    ansible-playbook Debug-LLDP-to-Graph.yml \
+      -i snap_data/hosts \
+      --start-at-task='Generate Graph'
