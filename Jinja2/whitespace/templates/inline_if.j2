@@ -1,0 +1,7 @@
+{% for intf in interfaces %}
+interface {{ intf.name }}
+{%   if intf.desc is defined %}
+ description {{ intf.desc }}
+{%   endif %}
+ ip address {% if intf.ip == 'dhcp' %}{{intf.ip}}{% else %}{{intf.ip|ipaddr('address')}} {{intf.ip|ipaddr('netmask')}}{% endif %}
+{% endfor %}

@@ -1,0 +1,14 @@
+{% macro address(addr) %}
+{% if addr == 'dhcp' %}
+  {{addr}}
+{% else %}
+  {{addr|ipaddr('address')}} {{addr|ipaddr('netmask')}}
+{% endif %}
+{% endmacro %}
+{% for intf in interfaces %}
+interface {{ intf.name }}
+{%   if intf.desc is defined %}
+ description {{ intf.desc }}
+{%   endif %}
+ ip address {{ address(intf.ip) }}
+{% endfor %}

@@ -1,0 +1,7 @@
+#jinja2: trim_blocks: False
+{% for intf in interfaces %}
+interface {{ intf.name }}
+{%  if intf.desc is defined %}
+ description {{ intf.desc }}
+{%  endif %}
+{% endfor %}

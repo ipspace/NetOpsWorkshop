@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  gather_facts: no
+  connection: local
+  vars_files:
+  - data.yml
+  tasks:
+  - file: path=results state=directory
+  - template:
+      src:  "{{item}}"
+      dest: "results/{{item|basename|regex_search('\\A([^.]+)')}}.txt"
+    with_fileglob: [ "templates/*.j2" ]

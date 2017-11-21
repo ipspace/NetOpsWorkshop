@@ -1,0 +1,12 @@
+---
+interfaces:
+- name: Ethernet0
+  desc: LAN interface
+  ip:   192.168.1.1/24
+
+- name: Ethernet1
+  desc: WAN interface
+  ip:   dhcp
+
+- name: Loopback0
+  ip:   172.16.0.1
