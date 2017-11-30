@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  tasks:
+  - file: path=arp_table.csv state=absent
+  - file: path=arp_table.csv state=touch
+
+- hosts: eos
+  tasks:
+  - eos_command:
+      commands: "show arp | json"
+    register: result
+  - debug: var=result
+  - set_fact: arp_table="{{ result.stdout[0].ipV4Neighbors }}"
+  - lineinfile:
+      dest:   arp_table.csv
+      regexp: "^{{inventory_hostname}},{{item['interface']}},{{item['address']}}"
+      line:   "{{inventory_hostname}},{{item['interface']}},{{item['address']}},{{item['hwAddress']}}"
+    with_items: "{{arp_table}}"

@@ -7,11 +7,10 @@
 - hosts: nxos
   tasks:
   - nxos_command:
-      commands: "show ip arp | json"
-      provider: "{{cli}}"
+      commands: "show ip arp vrf all | json"
     register: result
-  - set_fact: json_result="{{ result.stdout[0] }}"
-  - set_fact: arp_table="{{ json_result.TABLE_vrf.ROW_vrf.TABLE_adj }}"
+  - debug: var=result
+  - set_fact: arp_table="{{ result.stdout[0].TABLE_vrf.ROW_vrf.TABLE_adj }}"
   - lineinfile: 
       dest:   arp_table.csv 
       regexp: "^{{inventory_hostname}},{{item['intf-out']}},{{item['ip-addr-out']}}"

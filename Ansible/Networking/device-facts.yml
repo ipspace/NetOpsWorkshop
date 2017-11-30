@@ -1,19 +1,25 @@
 ---
 - hosts: ios
   tasks:
-  - ios_facts: provider="{{cli}}"
+  - ios_facts:
     register: facts
-  - debug: var=ansible_net_all_ipv4_addresses
   - debug: var=facts
 
 - hosts: nxos
   tasks:
-  - nxos_facts: provider="{{cli}}"
+  - nxos_facts:
     register: facts
   - debug: var=facts
 
 - hosts: junos
   tasks:
-  - junos_facts: provider="{{netconf}}"
+  - junos_facts:
     register: facts
   - debug: var=facts
+
+- hosts: eos
+  tasks:
+  - eos_facts:
+    register: facts
+  - debug: var=facts
+

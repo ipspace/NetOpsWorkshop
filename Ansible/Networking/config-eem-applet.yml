@@ -7,12 +7,19 @@
 ---
 - hosts: ios
   tasks:
+  - name: "Configure log logging"
+    ios_config:
+      lines:
+      - login on-success log
+      - no banner incoming
+      - no banner exec
+      - no banner login
+
   - name: "Configure EEM applet"
     ios_config:
-      provider: "{{cli}}"
       parents:
-        - event manager applet CLIlog
+      - event manager applet CLIlog
       lines:
-        -  event cli pattern .* sync no skip no
-        -  action 1.0 syslog priority informational msg $_cli_msg
-        -  action 2.0 set _exit_status 1
+      -  event cli pattern .* sync no skip no
+      -  action 1.0 syslog priority informational msg $_cli_msg
+      -  action 2.0 set _exit_status 1

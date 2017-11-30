@@ -1,0 +1,10 @@
+---
+- name: Retrieve OSPF interface information
+  hosts: ios
+  tasks:
+  - ios_command:
+      commands:
+      - "show ip ospf interface"
+    register: ospf_printout
+
+  - debug: msg={{ ospf_printout.stdout[0] | parse_cli('cli_filters/ios_ospf_interfaces.yml') }}

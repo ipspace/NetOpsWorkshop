@@ -3,12 +3,12 @@ ansible_device_os: nxos
 
 cli:
   username:  "{{ansible_user}}"
-  password:  "{{ansible_password}}"
-  host:      "{{inventory_hostname}}"
+  password:  "{{ansible_ssh_password|default(ansible_password)}}"
+  host:      "{{ansible_host|default(inventory_hostname)}}"
   transport: cli
 
 nxapi:
   username:  "{{ansible_user}}"
-  password:  "{{ansible_password}}"
-  host:      "{{inventory_hostname}}"
+  password:  "{{ansible_ssh_password|default(ansible_password)}}"
+  host:      "{{ansible_host|default(inventory_hostname)}}"
   transport: nxapi

@@ -7,11 +7,12 @@
   tasks:
   - junos_command:
       commands: "show arp"
-      provider: "{{netconf}}"
+      rpcs: get-arp-table-information
+      display: xml
     register: result
-  - set_fact: arp_table="{{ result.stdout[0]['arp-table-information']['arp-table-entry'] }}"
-  - lineinfile: 
-      dest:   arp_table.csv 
+  - set_fact: arp_table="{{ result.output[0]['rpc-reply']['arp-table-information']['arp-table-entry'] }}"
+  - lineinfile:
+      dest:   arp_table.csv
       regexp: "^{{inventory_hostname}},{{item['interface-name']}},{{item['ip-address']}}"
       line:   "{{inventory_hostname}},{{item['interface-name']}},{{item['ip-address']}},{{item['mac-address']}}"
     with_items: "{{arp_table}}"

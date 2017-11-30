@@ -1,0 +1,9 @@
+---
+- name: Retrieve OSPF neighbor information
+  hosts: ios
+  tasks:
+  - ios_command:
+      commands: "show ip ospf neighbor"
+    register: ospf_printout
+
+  - debug: msg={{ ospf_printout.stdout[0] | parse_cli('cli_filters/ios_ospf_neighbor_hash.yml') }}
