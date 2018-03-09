@@ -2,7 +2,7 @@
 
 Setup:
 
-    cd /vagrant/Examples/Summary-Reports/
+    cd /vagrant/Examples/6-router-setup
     source setup.sh
 
 Breaking config:

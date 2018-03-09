@@ -4,5 +4,7 @@
 * Start Vagrant machine (nms)
 * Collect SSH keys
 
-    cd /vagrant/Examples/OSPF-Deployment
-    ../../tools/ssh-keys/get-keys.yml
+    cd /vagrant/Examples/6-router-setup/
+    source setup.sh
+
+

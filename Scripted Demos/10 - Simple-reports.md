@@ -1,12 +1,8 @@
 # Simple reports
 
-Setup:
-
-    cd /vagrant/Examples/Summary-Reports/
-    source setup.sh
-
 ## Inventory report
 
+    cd /vagrant/Examples/Summary-Reports
     cd inventory
     rm -fr ../results/
     ansible-playbook report.yml
@@ -16,14 +12,14 @@ Setup:
     export ANSIBLE_SELECTIVE_LINE_LENGTH=80
     ansible-playbook report.yml
 
-* Inspect ../results/E1.yml
-* cat ../results/inventory.csv
-* open ../results/inventory.html
+* Inspect $OUTPUT/E1.yml
+* cat $OUTPUT/inventory.csv
+* open $OUTPUT/inventory.html
 
 ## Uptime report
 
     cd framework
-    rm -fr ../results
+    rm -fr $OUTPUT
     ansible-playbook framework.yml -e dst=save
 
 Inspect ../results/E1.yml
@@ -46,8 +42,9 @@ Run playbook in dump mode
 Create and inspect the hosts file
 
     ./hosts.yml --tags create
-    more ../results/hosts
+    more $OUTPUT/hosts
 
 Install the hosts file
 
     ./hosts.yml --tags install
+
