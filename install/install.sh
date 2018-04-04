@@ -34,7 +34,7 @@ echo "Install Python development and build modules"
 sudo apt-get -qq install build-essential
 sudo apt-get -qq install python-dev
 sudo apt-get -qq install libffi-dev
-sudo -H PYTHONWARNINGS=ignore easy_install -q pip
+sudo -H PYTHONWARNINGS=ignore easy_install -q pip==9.0.3
 sudo -H PYTHONWARNINGS=ignore pip install -qq --ignore-installed --upgrade setuptools
 sudo -H PYTHONWARNINGS=ignore pip install -qq --ignore-installed --upgrade urllib3[secure]
 echo "Installing NAPALM dependencies"
