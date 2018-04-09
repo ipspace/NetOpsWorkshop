@@ -11,3 +11,10 @@
       - ip scp server enable
       - alias exec replace configure replace
       authorize: yes
+  - name: Enable configuration archive on Cisco IOS devices
+    ios_config:
+      parents:
+      - archive
+      lines:
+      - "path flash:"
+      authorize: yes
