@@ -20,6 +20,9 @@ neighbor 10.0.0.13 description ISP-A
 ```
 ansible-playbook getandcommit.yml -e git_branch=actual
 ```
+
+## Merge _actual_ branch into _master_ branch
+
 * Open GitLab in browser
 * Open branches, compare actual and master
 * Display local diff

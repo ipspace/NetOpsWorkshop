@@ -1,4 +1,4 @@
-## Push individual changes as feature branches
+## Merge individual changes as feature branches
 
 * Change interface description on R1
 ```

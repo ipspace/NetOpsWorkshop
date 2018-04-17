@@ -3,7 +3,16 @@
 ## Setup
 
 * Run 3-router VIRL topology
+* Log into Ansible VM
+* Disable Ctrl-D exit
+```
+export IGNOREEOF=10
+```
 * Setup 3-router environment in `/vagrant/Examples/3-router-setup`
+```
+cd /vagrant/Examples/3-router-setup
+source setup.sh
+```
 * Prepare routers for automation
 ```
 ../../tools/ssh-keys/get-keys.yml
@@ -11,7 +20,7 @@
 ```
 * Erase and recreate https://gitlab.com/ipspace/ConfigRepo
 * Remove /vagrant/Examples/Private/ConfigRepo
-* Create a new local clone with git `clone git@gitlab.com:ipspace/ConfigRepo.git`
+* Create a new local clone with `git clone git@gitlab.com:ipspace/ConfigRepo.git`
 * Create an initial commit in `master` branch and push it to GitLab
 
 ## Simple capture-and-commit
