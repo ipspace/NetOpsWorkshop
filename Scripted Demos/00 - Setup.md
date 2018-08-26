@@ -8,6 +8,4 @@ cd /vagrant/Examples/6-router-setup/
 source setup.sh
 unset ANSIBLE_STDOUT_CALLBACK
 ../../tools/ssh-keys/get-keys.yml
-``
-
-
+```
