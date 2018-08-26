@@ -1,4 +1,4 @@
-# Simple reports
+# Creating a network diagram
 
 Setup:
 
