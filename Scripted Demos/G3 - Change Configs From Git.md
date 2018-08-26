@@ -8,6 +8,7 @@ git diff master
 popd
 ansible-playbook git_commit.yml -e git_branch=actual
 ```
+* Merge _actual_ into _master_ on GitLab
 * Create a feature branch
 ```
 pushd ../Private/ConfigRepo
@@ -26,8 +27,8 @@ git diff
 git commit -a -m 'Uplink to ISP_B'
 git push --all
 ```
-* Merge ISP_B into Actual on GitLab using merge request
-* Install changes to network devices
+* Merge *ISP_B* into _master_ on GitLab using merge request
+* Install changes from _master_ to network devices
 ```
 export ANSIBLE_STDOUT_CALLBACK=selective
 ansible-playbook --check gi_napalm.yml
@@ -46,6 +47,7 @@ git diff
 git commit -a -m 'Fix ISP-B AS number'
 git push --all
 ```
+* Merge *ISP_B* to *master* on GitLab
 * Validate master == actual
 ```
 ansible-playbook gc_scp.yml -e git_branch=actual

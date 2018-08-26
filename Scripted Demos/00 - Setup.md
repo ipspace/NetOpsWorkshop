@@ -1,6 +1,6 @@
 # Preparing the environment
 
-* Start VIRL and Inter-AS DMVPN topology
+* Start VIRL and Inter-AS topology
 * Start Vagrant machine (nms)
 * Collect SSH keys
 
