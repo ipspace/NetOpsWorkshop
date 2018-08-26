@@ -11,7 +11,7 @@
 ## Reports
 
 * [Setup](00%20-%20Setup.md)
-* [Simple reports](10%20-%20Simple-reports,md)
+* [Simple reports](10%20-%20Simple-reports.md)
 * [Network diagram](11%20-%20Network-graph.md)
 * [Compare network state](30%20-%20Compare-Network-State.md)
 
