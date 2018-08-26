@@ -29,6 +29,7 @@ Enable SCP
 
     ansible-playbook enable_scp.yml
     ansible-playbook deploy_scp.yml --tags copy
+    ansible-playbook deploy_scp.yml --tags deploy
     more compiled/results.txt
 
 Check routing
