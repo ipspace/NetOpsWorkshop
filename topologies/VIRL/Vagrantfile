@@ -1,15 +1,15 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-# Simplest possible Vagrant file
-#
-# Creates a Ubuntu VM with a second Ethernet interface connected to 172.16.1.0/24
-# (the vmnet2 interface in case you're using this file with VMware Fusion/Workstation
-#  and VIRL)
-#
 Vagrant.configure(2) do |config|
-  config.vm.box = "phusion/ubuntu-14.04-amd64"
+  config.vm.box = "bento/ubuntu-18.04"
   config.vm.box_check_update = false
+
+  ["vmware_workstation", "vmware_fusion"].each do |vmware_provider|
+    config.vm.provider(vmware_provider) do |vmware|
+      vmware.whitelist_verified = true
+    end
+  end
 
   config.vm.define "nms" do |nms|
     nms.vm.host_name = "nms"
