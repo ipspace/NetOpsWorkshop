@@ -1,6 +1,7 @@
 # Installing the Ansible VM
 
 Prerequisites:
+
 * hypervisor environment supported by a vagrant provider plugin (VirtualBox, VMware Fusion, VMware Workstation...)
 * vagrant
 * vagrant provider plugin for the selected hypervisor environment
@@ -15,9 +16,10 @@ From the main repository directory execute *vagrant up* optionally specifying th
 than one VM. You might have to specify the virtualization software you're using with the --provider flag. See vagrant documentation for more details.
 
 ## Installing the prerequisite software
+
 * Log into the VM with *vagrant ssh*
 * Change directory to _/vagrant/install_
-* Execute *install.sh* (for example, with *bash install.sh*) to:
+* If you're using Ubuntu 18.04 or later execute *install.sh* (for example, with *bash install.sh*), otherwise execute *install.ubuntu-14.04.sh*. The installation script will:
   * Update system software
   * Install required Ubuntu packages
   * Install Python modules required by YAML, Jinja2 and Ansible demos
