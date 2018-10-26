@@ -57,7 +57,7 @@ By default Vagrant maps current directory into the /vagrant folder within the VM
 Example:
 ```
 - name: nms
-  box:  ubuntu/trusty64
+  box:  bento/ubuntu-18.04
   memory: 1024
   folders:
     - { host: "../nws/Examples", dir: "/Examples" }

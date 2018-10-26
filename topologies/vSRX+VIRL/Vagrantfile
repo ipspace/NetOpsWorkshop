@@ -5,7 +5,7 @@ require "vagrant-host-shell"
 require "vagrant-junos"
 
 Vagrant.configure(2) do |config|
-  config.vm.box = "phusion/ubuntu-14.04-amd64"
+  config.vm.box = "bento/ubuntu-18.04"
   config.vm.box_check_update = false
 
   config.vm.define "nms" do |nms|

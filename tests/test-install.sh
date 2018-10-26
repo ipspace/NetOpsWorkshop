@@ -3,10 +3,7 @@
 #
 vagrant destroy -f
 set -e
-cp Vagrantfile.trusty.vb Vagrantfile
-vagrant up --provider virtualbox
-vagrant destroy -f
-cp Vagrantfile.xenial.bento Vagrantfile
+cp Vagrantfile.bento.18-04 Vagrantfile
 vagrant up --provider virtualbox
 vagrant destroy -f
 
