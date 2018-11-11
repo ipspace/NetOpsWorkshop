@@ -1,12 +1,27 @@
 [ios]
-r1.lab.local ansible_host=172.16.1.100 ansible_os=ios ansible_user=cisco ansible_ssh_pass=cisco
-r2.lab.local ansible_host=172.16.1.102 ansible_os=ios ansible_user=cisco ansible_ssh_pass=cisco
+r1.lab.local ansible_host=172.16.1.100
+r2.lab.local ansible_host=172.16.1.102
 
 [nxos]
-s1.lab.local ansible_host=172.16.1.101 ansible_os=nxos ansible_user=cisco ansible_ssh_pass=cisco
+s1.lab.local ansible_host=172.16.1.101
 
 [junos]
-srx.lab.local ansible_host=10.217.233.194 ansible_os=junos ansible_user=admin ansible_ssh_pass=admin1 ansible_port=8022 ansible_netconf_port=8830
+srx.lab.local ansible_host=172.16.1.13
 
-[eos]
-eos.lab.local ansible_host=10.217.233.194 ansible_os=eos ansible_user=admin ansible_ssh_pass=admin1 ansible_port=9022 api_port=9443
+[all:vars]
+ansible_connection=network_cli
+ansible_user=cisco
+ansible_ssh_pass=cisco
+
+[ios:vars]
+ansible_network_os=ios
+
+[nxos:vars]
+ansible_network_os=nxos
+ansible_connection=httpapi
+
+[junos:vars]
+ansible_user=admin
+ansible_ssh_pass=admin1
+ansible_network_os=junos
+ansible_connection=netconf

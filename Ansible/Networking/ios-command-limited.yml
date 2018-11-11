@@ -1,0 +1,11 @@
+---
+- hosts: ios
+  tasks:
+  - name: Execute show arp
+    ios_command:
+      commands:
+      - show arp
+  - name: Execute show ip route
+    ios_command:
+      commands:
+      - show ip route

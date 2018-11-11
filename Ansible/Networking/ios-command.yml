@@ -1,0 +1,6 @@
+---
+- hosts: ios
+  tasks:
+  - ios_command:
+      commands: show version
+    register: version

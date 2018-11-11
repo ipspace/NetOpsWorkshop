@@ -1,9 +1,2 @@
 ---
-ansible_device_os: junos
 version: 12.1X47
-
-netconf:
-  username:  "{{ansible_username}}"
-  password:  "{{ansible_ssh_password|default(ansible_password)}}"
-  host:      "{{ansible_host|default(inventory_hostname)}}"
-  transport: netconf

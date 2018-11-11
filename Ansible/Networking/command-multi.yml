@@ -3,16 +3,16 @@
   tasks:
   - ios_command:
       commands: show arp
-      provider: "{{cli}}"
+    register: arp
 
 - hosts: nxos
   tasks:
   - nxos_command:
       commands: show ip arp
-      provider: "{{cli}}"
+    register: arp
 
 - hosts: junos
   tasks:
   - junos_command:
       commands: show arp
-      provider: "{{netconf}}"
+    register: arp
