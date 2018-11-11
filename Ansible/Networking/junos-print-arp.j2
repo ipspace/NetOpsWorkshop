@@ -1,0 +1,4 @@
+{% set arp = results.output[0]["rpc-reply"]["arp-table-information"] %}
+{% for entry in arp["arp-table-entry"] %}
+{{ entry["interface-name"] }},{{ entry["ip-address"] }},{{ entry["mac-address"] }}
+{% endfor %}

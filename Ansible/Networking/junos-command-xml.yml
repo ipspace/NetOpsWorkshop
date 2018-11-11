@@ -1,0 +1,11 @@
+---
+- hosts: junos
+  tasks:
+  - junos_command:
+      commands: show arp
+      display: xml
+    register: results
+  - template:
+      src: junos-print-arp.j2
+      dest: "{{inventory_hostname}}.txt"
+    delegate_to: localhost

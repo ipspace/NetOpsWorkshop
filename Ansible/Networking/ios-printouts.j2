@@ -1,0 +1,17 @@
+Output from SHOW ARP
+====================
+{{ results.stdout[0] }}
+
+Output from SHOW IP INTERFACES BRIEF
+====================================
+{{ results.stdout[1] }}
+
+Legend and first ARP entry
+====================================
+{{ results.stdout_lines[0][0] }}
+{{ results.stdout_lines[0][1] }}
+
+Legend and last interface
+====================================
+{{ results.stdout_lines[1][0] }}
+{{ results.stdout_lines[1][-1] }}

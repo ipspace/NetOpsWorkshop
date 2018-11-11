@@ -1,0 +1,12 @@
+---
+- hosts: ios
+  tasks:
+  - ios_command:
+      commands:
+      - show arp
+      - show ip interface brief
+    register: results
+  - template:
+      src: ios-printouts.j2
+      dest: "{{inventory_hostname}}.txt"
+    delegate_to: localhost
