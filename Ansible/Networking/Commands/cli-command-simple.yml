@@ -1,7 +1,9 @@
 ---
 - hosts: all
+  vars:
+  - ansible_connection: network_cli
   tasks:
-  - set_fact: ansible_connection="network_cli"
   - cli_command:
       command: show version
     register: version
+  - debug: var=version
