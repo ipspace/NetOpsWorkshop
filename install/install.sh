@@ -49,6 +49,8 @@ sudo pip install $REPLACE $QUIET jinja2 six bracket-expansion netaddr
 echo "Install Ansible Python dependencies"
 echo ".. pynacl"
 sudo pip install $REPLACE $QUIET pynacl
+echo ".. paramiko netmiko"
+sudo pip install $REPLACE $QUIET paramiko netmiko
 #
 echo "Install optional Python components"
 sudo pip install $REPLACE $QUIET yamllint textfsm jmespath
