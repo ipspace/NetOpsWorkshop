@@ -79,5 +79,8 @@ Window #2
 ansible-playbook ios-command-multiple.yml -e ansible_user=ansible -l r1.lab.local
 ```
 
+## Using cli_command
 
-
+```
+ansible-playbook cli-command-simple.yml
+```

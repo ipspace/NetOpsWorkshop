@@ -1,0 +1,14 @@
+---
+- hosts: ios
+  tasks:
+  - name: "Ping targets from IOS devices"
+    ios_command:
+      commands: "ping vrf Mgmt-intf {{host}}"
+    register: results
+    loop: "{{ping_target}}"
+    loop_control:
+      loop_var: host
+      label: "Test #{{count}}: pinging {{host}}"
+      index_var: count
+
+  - debug: var=results

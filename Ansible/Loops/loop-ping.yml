@@ -1,0 +1,10 @@
+---
+- hosts: ios
+  tasks:
+  - name: "Ping targets from IOS devices"
+    ios_command:
+      commands: "ping vrf Mgmt-intf {{item}}"
+    register: results
+    loop: "{{ping_target}}"
+
+  - debug: var=results
