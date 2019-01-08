@@ -11,15 +11,23 @@
 rm .ssh/known_hosts
 cd /vagrant/Ansible/Networking
 . setup.sh
-cd Commands
+cd Command-Playbooks
 ```
 
-## Execute simple commands
+## Collect printouts
 
 ```
-ansible-playbook -v ios-command.yml -l r1.lab.local
-ansible-playbook -v junos-command.yml
+ansible-playbook collect-printout-ios.yml
 ```
+
+Explore `results` subdirectory
+
+```
+ansible-playbook collect-many-printouts-ios.yml
+```
+
+Explore `results` subdirectory
+
 
 ## Process command results
 
@@ -83,5 +91,4 @@ ansible-playbook ios-command-multiple.yml -e ansible_user=ansible -l r1.lab.loca
 
 ```
 ansible-playbook cli-command-simple.yml
-ansible-playbook cli-clear-counters.yml
 ```

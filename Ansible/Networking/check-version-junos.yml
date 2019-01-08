@@ -1,9 +1,0 @@
----
-- hosts: junos
-  tasks:
-  - junos_command:
-      commands: show version
-      provider: "{{netconf}}"
-    register: result
-  - fail: msg="Wrong Junos version"
-    when: "not ('{{version}}' in result.stdout[0]['software-information']['package-information'].comment)"

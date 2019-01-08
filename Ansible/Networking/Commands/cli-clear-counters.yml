@@ -1,0 +1,11 @@
+---
+- hosts: ios
+  vars:
+  - ansible_connection: network_cli
+  tasks:
+  - cli_command:
+      command: clear counters
+      prompt:
+      - "[confirm]"
+      answer:
+      - y
