@@ -58,4 +58,5 @@ ansible-playbook check-version-log.yml --extra-vars version=15.6
 
 ```
 more check-connectivity.yml
+ansible-playbook check-connectivity.yml
 ```
