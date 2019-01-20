@@ -8,11 +8,10 @@
   tasks:
   - ios_command:
       commands: show version
-      provider: "{{cli}}"
     register: result
 
-  - lineinfile: 
-      dest:   version_report.txt 
+  - lineinfile:
+      dest:   version_report.txt
       regexp: "{{inventory_hostname}}"
       line:   "{{inventory_hostname}}: IOS version mismatch"
-    when: "not ('Version {{version}}' in result.stdout[0])"
+    when: "not ('Version '+version in result.stdout[0])"

@@ -1,0 +1,10 @@
+---
+- hosts: nxos
+  tasks:
+  - nxos_command:
+      commands: "show ip arp vrf management | json"
+    register: results
+  - template:
+      src: nxos-print-arp.j2
+      dest: "{{inventory_hostname}}.txt"
+    delegate_to: localhost

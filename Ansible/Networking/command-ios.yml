@@ -1,8 +1,0 @@
----
-- hosts: ios
-  tasks:
-  - ios_command:
-      commands: show arp
-      host:     "{{inventory_hostname}}"
-      username: cisco
-      password: cisco

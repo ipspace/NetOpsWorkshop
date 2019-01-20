@@ -1,0 +1,11 @@
+---
+- hosts: ios
+  tasks:
+  - name: "Configure users"
+    ios_config:
+      lines:
+      - username {{user.key}} password {{user.value}}
+    loop: "{{local_users|dict2items}}"
+    loop_control:
+      loop_var: user
+      label: "Configuring {{user.key}}"

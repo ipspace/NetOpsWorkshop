@@ -1,0 +1,11 @@
+---
+- hosts: junos
+  tasks:
+  - junos_command:
+      commands: show version
+      display: xml
+    register: result
+  - set_fact: device_version={{ result.output[0]['rpc-reply']['software-information']['package-information'].comment }}
+  - debug: var=device_version
+  - fail: msg="Wrong Junos version"
+    when: "not (version in device_version)"

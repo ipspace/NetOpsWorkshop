@@ -1,0 +1,25 @@
+---
+- hosts: localhost
+  tasks:
+  - file: path=results state=absent
+  - file: path=results state=directory
+
+- hosts: ios
+  vars:
+    collect:
+    - show arp
+    - show version
+    - show ip interface brief
+  tasks:
+  - ios_command:
+      commands: "{{ collect }}"
+    register: result
+
+  - copy:
+      content: |
+        {{ result.stdout[index] }}
+      dest:    "results/{{inventory_hostname}}_{{item|replace(' ','_')}}.txt"
+    delegate_to: localhost
+    loop: "{{ collect }}"
+    loop_control:
+      index_var: index

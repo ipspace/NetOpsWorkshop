@@ -1,9 +1,3 @@
 ---
-ansible_device_os: ios
 version: "15.5(4)M"
-cli:
-  username:  "{{ansible_user}}"
-  password:  "{{ansible_ssh_password|default(ansible_password)}}"
-  host:      "{{ansible_host|default(inventory_hostname)}}"
-  transport: cli
-ping_target: [ '172.16.1.1', '172.16.1.12', '172.16.1.100', '172.16.1.101' ]
+ping_target: [ '172.16.1.1', '172.16.1.12', '172.16.1.100', '172.16.1.105' ]

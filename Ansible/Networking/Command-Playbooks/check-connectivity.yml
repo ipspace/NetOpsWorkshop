@@ -1,35 +1,35 @@
 ---
 - hosts: ios
+  vars:
+    ansible_command_timeout: 30
   tasks:
   - name: "Ping targets from IOS devices"
     ios_command:
-      commands: ping {{item}}
-      timeout:  3
-      retries:  1
-      wait_for: 
-      - result[0] contains "!!!"
-      provider: "{{cli}}"
-    with_items: "{{ping_target}}"
+      commands: ping vrf Mgmt-intf {{item}}
+    loop: "{{ping_target}}"
+    register: result
+    failed_when: "not '!!!' in result.stdout[0]"
     ignore_errors: yes
 
 - hosts: nxos
   tasks:
   - name: "Ping targets from NXOS devices"
     nxos_command:
-      commands: ping {{item}}
-      provider: "{{cli}}"
+      commands: ping {{item}} timeout 1 count 3 vrf management
     with_items: "{{ping_target}}"
     register: result
     failed_when: "not 'icmp_seq' in result.stdout[0]"
     ignore_errors: yes
 
 - hosts: junos
+  vars:
+    ansible_command_timeout: 30
   tasks:
   - name: "Ping targets from Junos devices"
     junos_command:
-      commands: ping {{item}}
-      provider: "{{netconf}}"
+      commands: ping count 3 wait 1 {{item}}
+      display: xml
     with_items: "{{ping_target}}"
     register: result
-    failed_when: "result.stdout[0]['ping-results']['ping-failure'] is defined"
+    failed_when: "result.output[0]['rpc-reply']['ping-results']['ping-failure'] is defined"
     ignore_errors: yes

@@ -1,0 +1,8 @@
+---
+- hosts: nxos
+  tasks:
+  - set_fact: ansible_connection="network_cli"
+  - nxos_nxapi:
+      state:    "{{API|default('present')}}"
+    connection: network_cli
+

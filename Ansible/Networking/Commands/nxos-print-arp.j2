@@ -1,0 +1,4 @@
+{% set arp = results.stdout[0].TABLE_vrf.ROW_vrf.TABLE_adj.ROW_adj %}
+{% for entry in arp %}
+{{ entry["intf-out"] }},{{ entry["ip-addr-out"] }},{{ entry.mac }}
+{% endfor %}

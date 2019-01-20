@@ -1,0 +1,12 @@
+---
+- hosts: ios
+  tasks:
+  - copy:
+      dest: /tmp/{{inventory_hostname}}.users
+      content: |
+        {% for username,password in local_users|dictsort %}
+        username {{ username }} password {{ password }}
+        {% endfor %}
+  - name: "Configure users"
+    ios_config:
+      src: /tmp/{{inventory_hostname}}.users
