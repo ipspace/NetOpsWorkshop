@@ -11,6 +11,7 @@
 rm .ssh/known_hosts
 cd /vagrant/Ansible/Networking
 . setup.sh
+../../tools/ssh-keys/get-keys.yml
 cd Commands
 ```
 
@@ -46,14 +47,14 @@ event manager applet CLIlog
  event cli pattern ".*" sync no skip no
  action 1.0 syslog priority informational msg "$_cli_msg"
  action 2.0 set _exit_status "1"
-exit
+end
 term mon
 ```
 
 Window #2
 
 ```
-ansible-playbook ios-command-multiple.yml
+ansible-playbook ios-command-multiple.yml -l r1.lab.local
 ```
 
 ## Limited command set
@@ -71,6 +72,7 @@ parser view Ansible
  commands exec include terminal width
  commands exec include show arp
  commands exec include show version
+end
 ```
 
 Window #2
