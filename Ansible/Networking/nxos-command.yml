@@ -1,6 +1,0 @@
----
-- hosts: nxos
-  tasks:
-  - nxos_command:
-      commands: show version
-    register: version
