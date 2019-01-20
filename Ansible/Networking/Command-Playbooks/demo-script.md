@@ -11,6 +11,7 @@
 rm .ssh/known_hosts
 cd /vagrant/Ansible/Networking
 . setup.sh
+../../tools/ssh-keys/get-keys.yml
 cd Command-Playbooks
 ```
 
@@ -29,66 +30,32 @@ ansible-playbook collect-many-printouts-ios.yml
 Explore `results` subdirectory
 
 
-## Process command results
+## Check device versions
 
 ```
-ansible-playbook ios-command-multiple.yml
-more r1.lab.local.txt
-ansible-playbook nxos-command-json.yml
-cat s1.lab.local.txt
-ansible-playbook junos-command-xml.yml
-cat srx.lab.local.txt
+more check-version.yml
+more ../group_vars/ios.yml
+ansible-playbook check-version.yml
 ```
 
-## Command logging
-
-Window #1
-
 ```
-ssh cisco@172.16.1.100
-(log in)
-conf t
-login on-success log
-!
-event manager applet CLIlog
- event cli pattern ".*" sync no skip no
- action 1.0 syslog priority informational msg "$_cli_msg"
- action 2.0 set _exit_status "1"
-exit
-term mon
+more check-version-junos.yml
+more ../group_vars/junos.yml
+ansible-playbook check-version-junos.yml
 ```
 
-Window #2
-
 ```
-ansible-playbook ios-command-multiple.yml
-```
-
-## Limited command set
-
-Window #1
-
-```
-conf t
-username ansible password 0 cisco
-username ansible privilege 2 view Ansible
-!
-parser view Ansible
- secret 5 $1$slTy$cA/Hk/M4F72Msr5BZaHzA/
- commands exec include terminal length
- commands exec include terminal width
- commands exec include show arp
- commands exec include show version
+more check-version-log.yml
+ansible-playbook check-version-log.yml
+cat version_report.txt
 ```
 
-Window #2
-
 ```
-ansible-playbook ios-command-multiple.yml -e ansible_user=ansible -l r1.lab.local
+ansible-playbook check-version-log.yml --extra-vars version=15.6
 ```
 
-## Using cli_command
+## Check connectivity
 
 ```
-ansible-playbook cli-command-simple.yml
+more check-connectivity.yml
 ```

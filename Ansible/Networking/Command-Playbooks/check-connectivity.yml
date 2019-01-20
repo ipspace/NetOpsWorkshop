@@ -15,7 +15,7 @@
   tasks:
   - name: "Ping targets from NXOS devices"
     nxos_command:
-      commands: ping {{item}} vrf management
+      commands: ping {{item}} timeout 1 count 3 vrf management
     with_items: "{{ping_target}}"
     register: result
     failed_when: "not 'icmp_seq' in result.stdout[0]"
@@ -27,9 +27,9 @@
   tasks:
   - name: "Ping targets from Junos devices"
     junos_command:
-      commands: ping {{item}}
+      commands: ping count 3 wait 1 {{item}}
       display: xml
     with_items: "{{ping_target}}"
     register: result
-    failed_when: "result.output['rpc-reply']['ping-results']['ping-failure'] is defined"
+    failed_when: "result.output[0]['rpc-reply']['ping-results']['ping-failure'] is defined"
     ignore_errors: yes
