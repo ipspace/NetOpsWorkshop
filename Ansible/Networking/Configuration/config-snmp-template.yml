@@ -1,0 +1,8 @@
+---
+- name: Enable SNMP
+  hosts: ios
+  tasks:
+  - ios_config: 
+      src: snmp.j2
+    register: changes
+  - debug: var=changes

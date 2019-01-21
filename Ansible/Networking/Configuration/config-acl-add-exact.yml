@@ -9,12 +9,11 @@
   tasks:
   - name: "Configure ACL on Cisco IOS"
     ios_config:
-      provider: "{{cli}}"
       parents:
-        - "ip access-list extended AllowedTraffic"
+      - "ip access-list extended AllowedTraffic"
       lines:
-        - "permit tcp any eq www any"
-        - "permit tcp any any eq www"
-        - "deny   tcp any any log"
-        - "deny   ip any any log"
+      - "permit tcp any eq www any"
+      - "permit tcp any any eq www"
+      - "deny   tcp any any log"
+      - "deny   ip any any log"
       match: exact

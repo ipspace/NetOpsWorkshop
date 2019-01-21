@@ -12,7 +12,6 @@
   tasks:
   - name: "Configure SNMP on IOS devices"
     ios_config:
-      provider: "{{cli}}"
       lines:
         - "snmp-server community {{snmp_community}} RO"
         - "snmp-server contact {{snmp_contact}}"
@@ -22,7 +21,6 @@
   tasks:
   - name: "Configure SNMP on Nexus OS devices"
     nxos_config:
-      provider: "{{cli}}"
       lines:
         - "snmp-server contact {{snmp_contact}}"
         - "snmp-server user {{snmp_community}} network-operator"

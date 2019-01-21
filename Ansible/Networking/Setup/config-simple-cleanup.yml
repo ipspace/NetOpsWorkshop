@@ -9,19 +9,19 @@
   tasks:
   - name: "Unconfigure SNMP on IOS devices"
     ios_config:
-      provider: "{{cli}}"
       lines:
         - "no snmp-server community {{snmp_community}}"
         - "no snmp-server contact {{snmp_contact}}"
         - "no snmp-server host {{snmp_host}} {{snmp_community}}"
 
 - hosts: nxos
+  vars:
+  - ansible_connection: network_cli
   tasks:
   - name: "Unconfigure SNMP on Nexus OS devices"
     nxos_config:
-      provider: "{{cli}}"
       lines:
         - "no snmp-server contact {{snmp_contact}}"
         - "no snmp-server user {{snmp_community}} network-operator"
-        - "no snmp-server host {{snmp_host}} {{snmp_community}}"
         - "no snmp-server community {{snmp_community}} group network-operator"
+        - "no snmp-server host {{snmp_host}} version 2c {{snmp_community}}"

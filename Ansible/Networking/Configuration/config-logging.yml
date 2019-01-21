@@ -1,0 +1,8 @@
+---
+- name: Enable command logging on Cisco IOS
+  hosts: ios
+  tasks:
+  - ios_config: 
+      src: logging.cfg
+    register: changes
+  - debug: var=changes
