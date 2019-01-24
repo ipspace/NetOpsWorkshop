@@ -1,4 +1,4 @@
-# Demo script for **Ansible Networking Modules - Executing Commands** presentation
+# Demo script for **Ansible Networking Modules - Command Playbooks** presentation
 
 ## Initial setup
 

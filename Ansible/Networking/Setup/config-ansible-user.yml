@@ -1,7 +1,8 @@
 #
 # This playbook configures Ansible user with very limited
-# executing capabilities on Cisco IOS. 
-# 
+# executing capabilities on Cisco IOS, and another user
+# that is not privileged (so you can test BECOME functionality)
+#
 # Use it before running command-ios-limited playbook
 #
 ---
@@ -9,14 +10,13 @@
   tasks:
   - name: "Configure Ansible user"
     ios_config:
-      provider: "{{cli}}"
       lines:
         - username ansible password 0 ansible
         - username ansible privilege 2 view Ansible
+        - username test password 0 test
 
   - name: "Configure Ansible view"
     ios_config:
-      provider: "{{cli}}"
       parents:
         - parser view Ansible
       lines:

@@ -1,0 +1,12 @@
+---
+- hosts: ios
+  name: "Get BGP AS Number"
+  tasks:
+  - ios_command: 
+      commands: 
+      - show ip protocols summary | include bgp
+    register: protocols
+  - set_fact: 
+      bgp_as: "{{ protocols.stdout[0]|regex_search('\\d+$') }}"
+    when: protocols.stdout[0]
+  - debug: var=bgp_as

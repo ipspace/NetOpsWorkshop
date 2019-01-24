@@ -1,0 +1,18 @@
+#
+# Configure an incorrect ACL on Cisco IOS
+#
+# Use this to playbook to prepare the router configuration for ACL demo
+#
+---
+- hosts: ios
+  tasks:
+  - ios_config:
+      match: exact
+      before:
+      - "no ip access-list extended AllowedTraffic"
+      parents:
+      - "ip access-list extended AllowedTraffic"
+      lines:
+      - "permit tcp any eq www any"
+      - "deny   tcp any any log"
+      - "deny   ip any any log"
