@@ -1,0 +1,6 @@
+all:
+  hosts:
+    r1.lab.local:
+      ansible_host: 172.16.1.100
+      ansible_connection: network_cli
+      ansible_network_os: ios
