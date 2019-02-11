@@ -17,6 +17,7 @@ ansible-playbook config-eem-applet.yml
 ansible-playbook config-simple-cleanup.yml
 ansible-playbook config-acl-preset.yml
 ansible-playbook clean-bgp-ios.yml -l r2.lab.local -t clean
+cd ../Configuration
 ```
 
 ## Configure SNMP
