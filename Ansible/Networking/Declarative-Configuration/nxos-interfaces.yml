@@ -1,0 +1,16 @@
+---
+- hosts: nxos
+  name:  configure interfaces
+  vars:
+    ansible_connection: network_cli
+  tasks:
+  - nxos_interface:
+      interface: "Vlan{{item.vlan}}"
+      admin_state: up
+    with_items: "{{ interfaces }}"
+    when: item.vlan is defined
+  - nxos_interface:
+      interface: "{{ item.interface }}"
+      admin_state: up
+    with_items: "{{ interfaces }}"
+    when: item.interface is defined

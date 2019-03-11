@@ -1,0 +1,11 @@
+---
+- hosts: nxos
+  name:  configure VLANs
+  vars:
+    ansible_connection: network_cli
+  tasks:
+  - nxos_vlan:
+      vlan_id: "{{ item.key }}" 
+      admin_state: up
+      name:    "{{ item.value }}"
+    loop: "{{ vlans|dict2items }}"

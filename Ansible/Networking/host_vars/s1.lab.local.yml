@@ -1,9 +1,9 @@
 ---
 # Interface configuration demos
 interfaces:
-  - { vlan: "100", ip: 172.16.1.101 }
-  - { vlan: "101", ip: 192.168.201.3 }
-  - { interface: "loopback0", prefix: "192.168.0.1/32" }
+  - { vlan: "100", ip: "172.16.1.101/24" }
+  - { vlan: "101", ip: "192.168.201.3/24" }
+  - { interface: "loopback0", ip: "192.168.0.1/32" }
 
 # BGP configuration demos
 bgp:
