@@ -4,7 +4,7 @@
   tasks:
   - net_interface:
       name: Loopback123
-      state: present
+      state: up
   - net_l3_interface:
       name: Loopback123
       ipv4: "{{ ip.Loopback123 }}"

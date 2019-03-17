@@ -1,0 +1,15 @@
+---
+- hosts: nxos
+  name:  configure VLANs
+  vars:
+    ansible_connection: network_cli
+  tasks:
+  - set_fact:
+      aggregate: >
+        [ {% for id,name in vlans.iteritems() %}
+          { "vlan_id": {{id}}, "name": "{{name}}" }
+          {{ "" if loop.last else "," }}
+          {% endfor %} ]
+  - nxos_vlan:
+      admin_state: up
+      aggregate: "{{ aggregate }}"
