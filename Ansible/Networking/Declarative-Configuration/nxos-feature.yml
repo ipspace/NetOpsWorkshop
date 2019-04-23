@@ -1,0 +1,7 @@
+---
+- hosts: nxos
+  tasks:
+  - nxos_feature: 
+      feature:  "{{item}}" 
+      state:    enabled 
+    loop: [ ospf,bgp,lldp,bfd ]

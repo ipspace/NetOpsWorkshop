@@ -2,17 +2,10 @@
 
 ## Initial setup
 
-* Start the virtual lab;
-* Start the Ansible virtual machine
-* Log into the Ansible virtual machine
-
 ```
-. .prompt
-rm .ssh/known_hosts
 cd /vagrant/Ansible/Networking
 . setup.sh
-../../tools/ssh-keys/get-keys.yml
-cd Command-Playbooks
+cd /vagrant/Ansible/Networking/Command-Playbooks
 ```
 
 ## Collect printouts

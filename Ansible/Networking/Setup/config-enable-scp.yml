@@ -1,0 +1,10 @@
+#
+# This playbook enables SCP on Cisco IOS devices
+#
+---
+- hosts: ios
+  tasks:
+  - name: "Configure SCP on IOS devices"
+    ios_config:
+      lines:
+        - "ip scp server enable"

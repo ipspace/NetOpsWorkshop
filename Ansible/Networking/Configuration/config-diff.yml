@@ -1,0 +1,7 @@
+#
+# Compare startup and running configuration
+#
+- hosts: ios
+  tasks:
+  - ios_config:
+      diff_against: startup

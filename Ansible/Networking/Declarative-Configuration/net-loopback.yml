@@ -1,0 +1,11 @@
+---
+- hosts: ios,nxos
+  name:  configure loopbacks
+  tasks:
+  - net_interface:
+      name: Loopback123
+      state: up
+  - net_l3_interface:
+      name: Loopback123
+      ipv4: "{{ ip.Loopback123 }}"
+    when: ip is defined and ip.Loopback123 is defined 

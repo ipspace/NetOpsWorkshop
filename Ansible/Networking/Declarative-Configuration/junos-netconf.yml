@@ -1,6 +1,0 @@
----
-- hosts: junos
-  tasks:
-  - junos_netconf:
-      listens_on: 830
-      state: present

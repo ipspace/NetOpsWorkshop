@@ -1,0 +1,16 @@
+---
+- hosts: nxos
+  name:  configure interfaces IP addresses for VLAN interfaces
+  vars:
+    ansible_connection: network_cli
+  tasks:
+  - nxos_l3_interface:
+      name: "Vlan{{item.vlan}}"
+      ipv4: "{{item.ip}}"
+    loop: "{{interfaces}}"
+    when: item.vlan is defined
+  - nxos_l3_interface:
+      name: "{{item.interface}}"
+      ipv4: "{{item.ip}}"
+    loop: "{{ interfaces }}"
+    when: item.interface is defined

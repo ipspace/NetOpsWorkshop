@@ -1,0 +1,22 @@
+#
+# Get running config
+#
+- hosts: localhost
+  tasks:
+  - file: path=results state=directory
+
+- hosts: ios
+  tasks:
+  - ios_facts: gather_subset=config
+  - copy:
+      content: "{{ ansible_net_config }}"
+      dest: "results/{{ inventory_hostname }}.facts.cfg"
+    delegate_to: localhost
+
+  - ios_config: backup=yes
+    register: backup
+  - debug: msg="Backup config is in {{ backup.backup_path }}"
+
+  - net_get:
+      src: "system:running-config"
+      dest: "results/{{ inventory_hostname }}.get.cfg"

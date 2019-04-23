@@ -10,7 +10,7 @@
   - ios_config:
       lines:
         - "no router bgp {{bgp_as}}"
-    when: "{{ bgp_as }}"
+    when: bgp_as
 
 - hosts: ios
   name: "Create BGP process on Cisco IOS"

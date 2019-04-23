@@ -1,0 +1,16 @@
+#
+# Enable HTTP server and save configuration
+#
+- hosts: ios
+  tasks:
+  - ios_config:
+      lines:
+      - ip http server
+      - ip http port 8080
+    notify: save_config
+
+  handlers:
+  - name: save_config
+    ios_config:
+      save_when: modified
+    when: not ansible_check_mode
