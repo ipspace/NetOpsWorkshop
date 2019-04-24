@@ -52,12 +52,6 @@ Vagrant.configure(VAGRANTFILE_API_VER) do |config|
     config.vm.define host["name"] do |srv|
       srv.vm.box = host["box"]
 
-      # Next 4 lines are used to solve the issue occuring during serial port creation
-      srv.vm.provider :virtualbox do |vb|
-	pipeName = host["name"]
-        vb.customize ["modifyvm", :id, "--uartmode1", "server", "\\\\.\\pipe\\#{pipeName}"]    
-      end
-
       if host.key?("forwarded_ports")
         host["forwarded_ports"].each do |port|
           srv.vm.network :forwarded_port, guest: port["guest"], host: port["host"], id: port["name"]
