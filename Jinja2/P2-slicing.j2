@@ -7,6 +7,6 @@ ip domain name {{ hostname[dot+1:] }}
 {% endif %}
 {% set dash = hostname.find('-') %}
 {% if dash > 0 %}
-  {% set idx = hostname[dash:] | int %}
+  {% set idx = hostname[dash+1:] | int %}
 router bgp {{ 64600 + idx }}
 {% endif %}
