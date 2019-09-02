@@ -1,8 +1,4 @@
-{% set allone = "255.255.255.255" | ipaddr('int') %}
-ip access-list extended LocalPrefixes
+ip access-list standard LocalPrefixes
 {% for intf in interfaces %}
-  {% set netmask = intf.prefix | ipaddr('netmask') | ipaddr('int') %}
-  {% set invmask = (allone - netmask) | ipaddr('address') %}
-  {% set prefix = intf.prefix | ipaddr(0) %}
-  permit {{prefix | regex_replace('/.*','') }} {{invmask}}
+  permit {{ intf.ip|ipaddr(0)|ipaddr('network_wildcard') }}
 {% endfor %}
