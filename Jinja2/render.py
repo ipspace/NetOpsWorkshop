@@ -16,7 +16,7 @@ def getOptions():
     options, args = getopt.getopt(sys.argv[1:], "y:j:n:sw", ["yaml=", "jinja=", "notrim", "strict", "warning"])
   except getopt.GetoptError as err:
     # print help information and exit:
-    print str(err)  # will print something like "option -a not recognized"
+    print (str(err))  # will print something like "option -a not recognized"
     sys.exit(2)
 
   global yamlfile,jinjafile,trim,undefined
@@ -59,7 +59,7 @@ if jinjafile is None:
   jinjafile = filename+".j2"
 
 print ('--- Reading YAML file '+yamlfile+' ---')
-with open(yamlfile) as _: yamldict = yaml.load(_)
+with open(yamlfile) as _: yamldict = yaml.load(_,Loader=yaml.BaseLoader)
 
 print ('--- YAML dictionary in '+yamlfile+' ---')
 pprint(yamldict)

@@ -15,8 +15,8 @@ with open(sys.argv[1]) as _:
    text = _.read()
 
 print('##################################')
-print text
+print(text)
 
-body = yaml.load(text,Loader=yaml.BaseLoader);
+body = yaml.load(text,Loader=yaml.BaseLoader)
 print('##################################')
 pprint(body)
