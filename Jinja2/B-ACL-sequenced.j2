@@ -1,16 +1,19 @@
 {#
-  This example no longer works in Jinja2 2.9 and later.
+  The original example no longer works in Jinja2 2.9 and later.
 
   Jinja2 changed variable scoping rules within for loops - prior to
   release 2.9 the variable set within a for loop retained their
-  value across loop iterations. Starting with release 2.9 the 
-  variables are reinitialized at everz iteration of the loop.
+  value across loop iterations. Starting with release 2.9 the
+  variables are reinitialized at every iteration of the loop.
+
+  You can, however, use Jinja2 namespaces to have a global variable
+  you can work with (HT: Asier Gonzales)
 #}
 {% for name,list in acls.items() %}
 ip access-list extended {{name}}
-{% set count = 10 %}
+{% set count = namespace(value=0) %}
 {% for line in list %}
-  {% set count = count + 10 %}
-  {{ count }} {{ line }}
+  {% set count.value = count.value + 10 %}
+  {{ count.value }} {{ line }}
 {% endfor %}
 {% endfor %}
