@@ -1,0 +1,42 @@
+---
+spines_zurich:
+  hosts:
+    s1-zh:
+      ansible_host: 10.0.0.1
+    s2-zh:
+      ansible_host: 10.0.0.2
+
+leafs_zurich:
+  hosts:
+    l1-zh:
+      ansible_host: 10.0.0.101
+    l2-zh:
+      ansible_host: 10.0.0.102
+      description: Don't touch
+    bl1-zh:
+      ansible_host: 10.0.0.103
+      ansible_user: edge
+
+edge_zurich:
+  hosts:
+    bl1-zh:
+    fw-zh:
+
+zurich:
+  children:
+    spines_zurich:
+    leafs_zurich:
+    edge_zurich:
+  vars:
+    snmp_server: nms.zh.example.com
+
+edge:
+  children:
+    edge_zurich:
+
+switches:
+  children:
+    leafs_zurich:
+    spines_zurich:
+  vars:
+    ansible_user: admin

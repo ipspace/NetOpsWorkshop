@@ -1,0 +1,14 @@
+---
+all:
+  hosts:
+    dns-server-[a:c]:
+    ntp-server:
+
+spines_zurich:
+  hosts:
+    s[1:4]-zh:
+
+leafs_zurich:
+  hosts:
+    bl1-zh:
+    l[01:12]-zh:
