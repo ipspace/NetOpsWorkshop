@@ -1,0 +1,5 @@
+---
+ansible_user: admin
+ansible_ssh_pass: admin1
+ansible_network_os: junos
+ansible_connection: netconf

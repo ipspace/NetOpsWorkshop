@@ -1,0 +1,14 @@
+#
+# Dump all Ansible variables into <host>.variables.txt
+#
+---
+- hosts: localhost
+  vars:
+    dir: /tmp
+  tasks:
+  - shell: ls {{ dir }}
+    register: files
+  - copy:
+      content: "{{ files|to_yaml }}"
+      dest: "{{ inventory_hostname }}.files.txt"
+    delegate_to: localhost

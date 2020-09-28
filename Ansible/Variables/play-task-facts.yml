@@ -1,0 +1,17 @@
+#
+# Demonstrate local variables
+#
+---
+- hosts: localhost
+  vars:
+    dir: /bin
+  tasks:
+  - name: First in play
+    debug: var=dir
+  - set_fact: dir=/tmp
+  - debug: var=dir
+    name: After set_fact
+  - debug: var=dir
+    name: Task variable
+    vars:
+      dir: /usr/local/bin

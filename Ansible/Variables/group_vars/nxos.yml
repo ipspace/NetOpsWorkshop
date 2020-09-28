@@ -1,0 +1,3 @@
+---
+ansible_network_os: nxos
+ansible_connection: httpapi

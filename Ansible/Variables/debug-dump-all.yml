@@ -1,0 +1,10 @@
+#
+# Dump all Ansible variables into <host>.variables.txt
+#
+---
+- hosts: all
+  tasks:
+  - copy:
+      content: "{{ hostvars[inventory_hostname]|to_yaml }}"
+      dest: "{{ inventory_hostname }}.variables.txt"
+    delegate_to: localhost

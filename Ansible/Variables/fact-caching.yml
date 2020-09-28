@@ -1,0 +1,22 @@
+#
+# Demonstrate fact caching
+#
+---
+- hosts: localhost
+  vars:
+    dir: /tmp
+  tasks:
+  - name: First play
+    debug: var=dir
+  - set_fact: user=test
+  - shell: ls {{ dir }}
+    register: files
+
+- hosts: localhost
+  tasks:
+  - name: Second play, directory
+    debug: var=dir
+  - name: Second play, user
+    debug: var=user
+  - name: Second play, files
+    debug: var=files

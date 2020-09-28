@@ -1,0 +1,23 @@
+#
+# Demonstrate local variables
+#
+---
+- hosts: localhost
+  vars:
+    dir: /bin
+  tasks:
+  - name: First in play
+    debug: var=dir
+  - block:
+      - debug: var=dir
+        name: Within a block
+      - debug: var=dir
+        name: Task variable
+        vars:
+          dir: /tmp
+      - debug: var=dir
+        name: Back in block
+    vars:
+      dir: /usr/local/bin
+  - name: Outside of block
+    debug: var=dir
