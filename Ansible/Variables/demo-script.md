@@ -60,9 +60,9 @@ Inspecting registered variables
 
 ```
 cat get-files.yml
-ansible-playbook get-files.yml
+ansible-playbook -v get-files.yml
 export ANSIBLE_STDOUT_CALLBACK=yaml
-ansible-playbook get-files.yml
+ansible-playbook -v get-files.yml
 unset ANSIBLE_STDOUT_CALLBACK 
 cat debug.yml
 ansible-playbook debug.yml
