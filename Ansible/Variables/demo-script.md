@@ -1,5 +1,14 @@
 # Ansible Variables Demo Script
 
+Prepare for the demo
+
+* Change prompt if needed
+* Unset all Ansible environment variables
+
+```
+export PS1='\033[33m\W\[\033[00m $ '
+```
+
 ## Inventory and Host/Group Variables
 
 Variables in inventory file
@@ -45,11 +54,25 @@ cat fact-caching.yml
 ansible-playbook fact-caching.yml
 ```
 
-## Debugging Caching
+## Debugging
+
+Inspecting registered variables
 
 ```
+cat get-files.yml
+ansible-playbook get-files.yml
+export ANSIBLE_STDOUT_CALLBACK=yaml
+ansible-playbook get-files.yml
+unset ANSIBLE_STDOUT_CALLBACK 
 cat debug.yml
 ansible-playbook debug.yml
+export ANSIBLE_STDOUT_CALLBACK=yaml
+ansible-playbook debug.yml
+```
+
+Dumping variables into files
+
+```
 cat debug-dump-single.yml
 ansible-playbook debug-dump-single.yml
 cat localhost.files.txt
