@@ -1,0 +1,37 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+
+# Specify minimum Vagrant version and Vagrant API version
+Vagrant.require_version ">= 1.6.0"
+VAGRANTFILE_API_VER = "2"
+
+# VirtualBox settings
+# Increase vmmemory if you want more than 512mb memory in the vm's
+vmmemory = 512
+# Increase numcpu if you want more cpu's per vm
+numcpu = 1
+
+Vagrant.configure("2") do |config|
+  config.vm.provider "virtualbox" do |v|
+    v.memory = vmmemory
+    v.cpus = numcpu
+  end
+
+  config.vm.define "docker" do |i|
+    i.vm.synced_folder "..", "/nws"
+    i.vm.box = "bento/ubuntu-20.04"
+    i.vm.hostname = "manager"
+    i.vm.provision "ansible", playbook: "install-docker.yaml"
+    i.vm.provider "virtualbox" do |virtualbox|
+      virtualbox.customize [
+        "modifyvm",:id,
+        "--nicpromisc2", "allow-all",
+        "--clipboard", "bidirectional"]
+    end
+  end
+end

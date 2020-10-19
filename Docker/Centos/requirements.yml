@@ -1,0 +1,11 @@
+---
+collections:
+  - name: cisco.asa
+  - name: cisco.nxos
+  - name: cisco.ios
+  - name: cisco.iosxr
+  - name: arista.eos
+  - name: f5networks.f5_modules
+  - name: netbox.netbox
+  - name: community.general
+  - name: junipernetworks.junos
