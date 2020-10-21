@@ -9,3 +9,5 @@ libxslt1-dev
 libssl-dev
 make
 git
+jq
+

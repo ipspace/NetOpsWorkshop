@@ -8,7 +8,6 @@ yapf>=0.2.4
 requests>=2.2.0
 urllib3>=1.24
 lxml>=4.2.5
-paramiko
 jmespath
 scp
 ciscoconfparse
@@ -19,3 +18,6 @@ pynetbox
 objectpath
 napalm
 napalm-ansible
+yamllint
+yq
+
