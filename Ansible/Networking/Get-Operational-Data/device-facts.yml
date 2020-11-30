@@ -1,25 +1,15 @@
 ---
-- hosts: ios
+- hosts: all
   tasks:
-  - ios_facts:
-    register: facts
-  - debug: var=facts
+  - cisco.ios.ios_facts:
+      gather_subset: [ interfaces, hardware ]
+    when: ansible_network_os == 'ios'
 
-- hosts: nxos
-  tasks:
-  - nxos_facts:
-    register: facts
-  - debug: var=facts
+  - junipernetworks.junos.junos_facts:
+    when: ansible_network_os == 'junos'
 
-- hosts: junos
-  tasks:
-  - junos_facts:
-    register: facts
-  - debug: var=facts
+  - arista.eos.eos_facts:
+      gather_subset: [ interfaces, hardware ]
+    when: ansible_network_os == 'eos'
 
-- hosts: eos
-  tasks:
-  - eos_facts:
-    register: facts
-  - debug: var=facts
-
+  - debug: var=vars

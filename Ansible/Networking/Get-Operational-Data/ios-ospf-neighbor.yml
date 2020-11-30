@@ -1,0 +1,15 @@
+---
+- hosts: all
+  gather_facts: false
+  vars:
+    home: "{{ lookup('env','HOME') }}"
+    textfsm_path: "{{ home }}/.ansible/ntc-templates/templates/"
+    ospf_textfsm: cisco_ios_show_ip_ospf_neighbor.textfsm
+  tasks:
+  - cisco.ios.ios_command:
+      commands: show ip ospf neighbor
+    register: printout
+  - set_fact:
+      ospf_neighbor:
+        "{{ printout.stdout[0]|
+            ansible.netcommon.parse_cli_textfsm(textfsm_path+ospf_textfsm)}}"

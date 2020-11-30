@@ -1,0 +1,9 @@
+---
+- hosts: all
+  gather_facts: false
+  tasks:
+  - ansible.netcommon.cli_parse:
+      command: "show ip ospf neighbor"
+      parser:
+        name: ansible.netcommon.ntc_templates
+    register: data

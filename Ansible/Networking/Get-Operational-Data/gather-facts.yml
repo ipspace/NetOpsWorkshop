@@ -1,0 +1,10 @@
+---
+- hosts: all
+  gather_facts: true
+  module_defaults:
+    arista.eos.eos_facts:
+      gather_network_resources: [ interfaces ]
+    cisco.ios.ios_facts:
+      gather_subset: [ interfaces,hardware ]
+  tasks:
+  - debug: var=ansible_net_version

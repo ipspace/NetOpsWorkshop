@@ -1,0 +1,13 @@
+---
+- hosts: eos
+  tasks:
+  - arista.eos.eos_command:
+      commands: "show arp | json"
+    register: result
+  - set_fact: arp_table="{{ result.stdout[0].ipV4Neighbors }}"
+  - copy:
+      dest: "{{inventory_hostname}}.arp.csv"
+      content: |
+        {% for arp in arp_table %}
+        {{inventory_hostname}},{{arp.interface}},{{arp.address}},{{arp.hwAddress}}
+        {% endfor %}

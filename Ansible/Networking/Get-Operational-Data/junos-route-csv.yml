@@ -1,0 +1,14 @@
+---
+- hosts: junos
+  tasks:
+  - junipernetworks.junos.junos_command:
+      commands: show route
+      output:   xml
+    register: result
+  - copy:
+      dest: "{{inventory_hostname}}.routes.csv"
+      content: |
+        {% set rt = result.output[0]["rpc-reply"]["route-information"]["route-table"][0]["rt"] %}
+        {% for route in rt %}
+        {{inventory_hostname}},{{route["rt-destination"]}},{{route["rt-entry"]["nh"]}}
+        {% endfor %}

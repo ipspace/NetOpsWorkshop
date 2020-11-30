@@ -1,0 +1,10 @@
+---
+- hosts: all
+  gather_facts: false
+  tasks:
+  - ansible.netcommon.cli_parse:
+      command: "show running"
+      parser:
+        name: ansible.netcommon.ttp
+        template_path: ios_config_interface.ttp
+    register: data
