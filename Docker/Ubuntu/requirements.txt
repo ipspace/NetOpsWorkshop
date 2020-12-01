@@ -20,4 +20,5 @@ napalm
 napalm-ansible
 yamllint
 yq
-
+ntc-templates
+ttp
