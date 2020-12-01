@@ -11,3 +11,6 @@
 # Ignore Ansible retry and log files 
 *.retry
 ansible.log
+
+# Don't publish SFTP configuration
+sftp-config.json
