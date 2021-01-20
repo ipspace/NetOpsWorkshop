@@ -1,0 +1,8 @@
+---
+- hosts: all
+  tasks:
+  - import_tasks: import-debug.yml
+    vars:
+      level: 1
+    when: ansible_network_os=='ios'
+    tags: [ debug ]

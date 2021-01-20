@@ -1,0 +1,7 @@
+---
+- hosts: all
+  name:  Ping GW from all devices
+  tasks:
+  - include_tasks: exec/{{ansible_network_os}}-ping.yml
+    vars:
+      item: "{{ gw }}"

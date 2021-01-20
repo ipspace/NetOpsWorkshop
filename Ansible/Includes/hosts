@@ -1,2 +1,6 @@
-r1.lab.local ansible_os=ios
-s1.lab.local ansible_os=nxos
+[iosv]
+r1.lab.local ansible_network_os=ios
+r2.lab.local ansible_network_os=ios
+
+[nxos]
+s1.lab.local ansible_network_os=nxos

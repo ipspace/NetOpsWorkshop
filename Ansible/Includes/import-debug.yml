@@ -1,0 +1,5 @@
+---
+- debug:
+    msg: "Debugging level: {{ level|default('not defined') }}"
+- debug: var=ansible_network_os
+  when: ansible_network_os=='nxos'

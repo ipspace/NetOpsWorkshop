@@ -1,15 +1,15 @@
 ---
-- include: setup-directory.yml
-  name:    set up working directories
+- hosts: localhost
+  name: Create directory
+  tasks:
+  - file: path=configs state=directory
 
-- hosts: all
+- hosts: iosv
   tasks:
   - template: src=ios/common.j2 dest=configs/{{inventory_hostname}}.txt
     name: create configuration for IOS devices
-    when: ansible_os == 'ios'
 
-- hosts: all
+- hosts: nxos
   tasks:
   - template: src=nxos/common.j2 dest=configs/{{inventory_hostname}}.txt
     name: create configuration for Nexus devices
-    when: ansible_os == 'nxos'

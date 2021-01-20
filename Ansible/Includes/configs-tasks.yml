@@ -1,7 +1,7 @@
 ---
-- include: setup-directory.yml
+- import_playbook: setup-directory.yml
   name:    set up working directories
 
 - hosts: all
   tasks:
-  - include: tasks/{{ansible_os}}-config.yml
+  - include_tasks: tasks/{{ansible_network_os}}-config.yml

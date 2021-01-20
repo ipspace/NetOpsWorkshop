@@ -1,15 +1,4 @@
 ---
 - name: "Ping {{item}} from NX-OS devices"
-  nxos_command:
-    commands: ping {{item}}
-    provider: "{{cli}}"
-  ignore_errors: yes
-  register: result
-
-- assert:
-    that: result.stdout[0] is defined
-    msg:  Ping command crashed
-
-- assert:
-    that: "'icmp_seq' in result.stdout[0]"
-    msg:  "Cannot ping {{item}} from {{ansible_host}}"
+  nxos_ping:
+    dest: "{{ item }}"

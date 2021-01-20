@@ -1,0 +1,8 @@
+---
+- hosts: all
+  name:  Ping GW from all devices
+  tasks:
+  - set_fact:
+      ping_list: "{{ hostvars | json_query('*.links[0].ipv4') | ipaddr('address') }}"
+  - include_tasks: exec/{{ansible_network_os}}-ping.yml
+    with_items: "{{ ping_list }}"

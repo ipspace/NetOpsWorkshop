@@ -1,13 +1,9 @@
 ---
-ansible_user: cisco
-ansible_ssh_pass: cisco
+ansible_user: vagrant
+ansible_ssh_pass: vagrant
 snmp_community: cisco
 snmp_contact: admin@lab.local
 snmp_host: 172.16.1.12
 syslog_host: 172.16.1.12
-
-cli:
-  username:  "{{ansible_user}}"
-  password:  "{{ansible_password}}"
-  host:      "{{inventory_hostname}}"
-  transport: cli
+gw: 172.16.0.1
+connection: network_cli
