@@ -1,9 +1,13 @@
 ---
 - import_playbook: setup-directory.yml
   name: set up working directories
+  tags: [ setup ]
 
 - hosts: all
   vars:
     configs: configs
   roles:
-  - ospf_router
+  - role: ospf_router
+    vars:
+      ospf_area: 1
+    tags: [ create ]

@@ -1,6 +1,6 @@
 ---
-- include: setup-directory.yml
-  name:    set up working directories
+- import_playbook: setup-directory.yml
+  name: set up working directories
 
 - hosts: all
   vars:

@@ -1,0 +1,11 @@
+---
+- hosts: all
+  vars:
+    configs: configs
+  tasks:
+  - debug: msg="AREA {{ ospf_area }}"
+  - import_role:
+      name: ospf_router
+    vars:
+      ospf_area: 1
+  - debug: msg="AREA {{ ospf_area }}"

@@ -1,0 +1,15 @@
+---
+- hosts: all
+  vars:
+    configs: configs
+  tasks:
+  - debug: msg="AREA {{ ospf_area|default('undefined') }}"
+
+  - include_role:
+      name: network_device
+  - include_role:
+      name: ospf_router
+      public: yes
+    vars:
+      ospf_area: 2
+  - debug: msg="AREA {{ ospf_area|default('undefined') }}"

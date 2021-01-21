@@ -1,0 +1,15 @@
+nodes:
+- name: r1.lab.local
+  device: iosv
+- name: r2.lab.local
+  device: iosv
+- name: s1.lab.local
+  device: nxos
+
+links:
+- r1.lab.local:
+  r2.lab.local:
+- r1.lab.local:
+  s1.lab.local:
+- r2.lab.local:
+  s1.lab.local:

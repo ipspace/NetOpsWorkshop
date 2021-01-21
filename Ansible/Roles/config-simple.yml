@@ -1,5 +1,5 @@
 ---
-- include: setup-directory.yml
+- import_playbook: setup-directory.yml
   name:    set up working directories
 
 - hosts: all

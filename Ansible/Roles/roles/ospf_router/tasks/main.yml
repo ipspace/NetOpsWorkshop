@@ -1,3 +1,5 @@
 ---
-- template: src={{ansible_os}}-ospf.j2 dest={{configs}}/10-ospf-{{inventory_hostname}}.inc
+- template:
+    src: "{{ansible_network_os}}-ospf.j2"
+    dest: "{{configs}}/10-ospf-{{inventory_hostname}}.inc"
   name: create OSPF routing process

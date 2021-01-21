@@ -1,5 +1,0 @@
----
-location: Rack-1
-interfaces:
-  - GigabitEthernet0/1
-  - Loopback0

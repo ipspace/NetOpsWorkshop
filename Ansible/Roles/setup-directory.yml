@@ -2,6 +2,8 @@
 - hosts: localhost
   name: Create directory
   tasks:
-  - file: path=configs state=absent
-    when: cleanup is defined  
-  - file: path=configs state=directory
+  - name: clean up config directory
+    file: path=configs state=absent
+    when: config_cleanup is defined
+  - name: create config directory
+    file: path=configs state=directory

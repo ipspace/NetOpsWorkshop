@@ -1,2 +1,0 @@
-r1.lab.local ansible_os=ios
-s1.lab.local ansible_os=nxos
