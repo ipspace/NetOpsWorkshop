@@ -1,0 +1,12 @@
+!
+router ospf 1
+!
+{% if loopback is defined %}
+interface loopback0
+ ip ospf 1 area {{ ospf_area }}
+{% endif %}
+{% for l in links|default([]) %}
+!
+interface {{l.ifname}}
+ ip ospf 1 area {{ospf_area}}
+{% endfor %}

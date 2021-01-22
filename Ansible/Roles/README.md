@@ -27,3 +27,11 @@ ansible-playbook config-import.yml
 cat config-include.yml 
 ansible-playbook config-include.yml
 ```
+
+## Installing Collections
+
+```
+rm -fr ~/.ansible/collections/ansible_collections/ipspace/
+cat requirements.yml
+ansible-galaxy install -r requirements.yml
+```
