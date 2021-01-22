@@ -1,0 +1,13 @@
+---
+- hosts: all
+  tasks:
+  - import_role:
+      name: ipspace.config.directory
+      tasks_from: prepare.yml
+
+  - import_role:
+      name: ipspace.config.ospf_router
+
+  - import_role:
+      name: ipspace.config.directory
+      tasks_from: assemble.yml
