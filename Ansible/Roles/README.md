@@ -34,4 +34,20 @@ ansible-playbook config-include.yml
 rm -fr ~/.ansible/collections/ansible_collections/ipspace/
 cat requirements.yml
 ansible-galaxy install -r requirements.yml
+tree ~/.ansible/collections/ansible_collections/ipspace/config
+cat requirements-devel.yml
+ansible-galaxy install -r requirements-devel.yml
+rm -fr ~/.ansible/collections/ansible_collections/ipspace/
+ansible-galaxy install -r requirements-devel.yml
+tree ~/.ansible/collections/ansible_collections/ipspace/config
+```
+
+## Using Collections
+
+```
+cat config-collection.yml
+ansible-playbook config-collection.yml
+cat config-collection-namespace.yml
+ansible-playbook config-collection-namespace.yml
+tree roles 
 ```
