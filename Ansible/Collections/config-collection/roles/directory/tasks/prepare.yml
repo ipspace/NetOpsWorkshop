@@ -1,0 +1,7 @@
+---
+- name: clean up config directory
+  file: path={{ configs }} state=absent
+  when: config_cleanup is defined
+  run_once: true
+- name: create config directory
+  file: path={{ configs }}/{{ inventory_hostname }} state=directory

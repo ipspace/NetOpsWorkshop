@@ -1,0 +1,4 @@
+---
+- assemble:
+    src: "{{configs}}/{{inventory_hostname}}"
+    dest: "{{configs}}/{{inventory_hostname}}.cfg"
