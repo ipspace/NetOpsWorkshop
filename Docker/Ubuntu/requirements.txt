@@ -1,6 +1,6 @@
 Jinja2==2.11.2
 chardet==3.0.4
-cryptography==3.3.1
+cryptography==3.3.2
 ansible==3.2.0
 cffi
 paramiko
