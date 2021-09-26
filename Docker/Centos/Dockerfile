@@ -12,7 +12,7 @@ RUN echo "===> Install Ansible (Core & Collections) & dependency Python packages
 COPY requirements.txt /tmp/requirements.txt
 COPY requirements.yml /tmp/requirements.yml
 RUN pip3 install --upgrade -r /tmp/requirements.txt  && \
-     ansible-galaxy collection install -r /tmp/requirements.yml
+     ansible-galaxy collection install -r /tmp/requirements.yml -p /usr/share/ansible/collections
 RUN echo "===> Clean up ..."
 RUN yum clean all && \
       rm -rf /var/cache/yum /tmp/*
