@@ -13,7 +13,7 @@ The subdirectories of this directory contain _Dockerfile_ and related lists of p
 
 Each subdirectory contains a typical build script (_build.sh_) and a run script (_run.sh_) that you can use to start the container as non-root user.
 
-Based on your preference for Linux distributions, you can build either a Centos-based or a Ubuntu-based container.
+Based on your preference for Linux distributions, you can build either a Centos-based or a Ubuntu-based container. Ubuntu-based container uses Ansible release 5.0.1, Centos-based container uses release 4.9.0 because later releases require Python 3.8 (Centos 8 is still on Python 3.6).
 
 Please feel free to extend the container to fit your needs:
 
