@@ -1,5 +1,6 @@
 ncclient==0.6.9
 ansible==5.0.1
+netsim-tools
 cffi
 paramiko
 netmiko
