@@ -1,9 +1,9 @@
 ncclient==0.6.9
-ansible==5.0.1
+ansible==5.6.0
 netsim-tools
 cffi
 paramiko
-netmiko
+netmiko<4.0.0,>=3.3.0
 textfsm
 pylint>=2.1.1
 yapf>=0.2.4
