@@ -24,3 +24,6 @@ yamllint
 yq
 ntc-templates
 ttp
+vim
+nano
+iputils-ping
