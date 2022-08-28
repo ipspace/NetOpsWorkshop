@@ -1,7 +1,7 @@
 ncclient==0.6.9
 cryptography==3.3.2
 ansible==4.9.0
-netsim-tools
+networklab
 paramiko
 netmiko
 textfsm
