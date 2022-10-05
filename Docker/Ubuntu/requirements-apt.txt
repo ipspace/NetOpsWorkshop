@@ -13,3 +13,4 @@ jq
 vim
 nano
 iputils-ping
+ipmitool
