@@ -10,4 +10,6 @@ libffi-devel
 make
 git
 jq
-
+vim
+nano
+ipmitool
