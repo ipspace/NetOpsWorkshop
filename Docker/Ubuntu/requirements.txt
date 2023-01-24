@@ -1,5 +1,5 @@
 ncclient==0.6.9
-ansible==5.6.0
+ansible==7.0.0
 networklab
 cffi
 paramiko
