@@ -5,13 +5,13 @@
 - name: Get SSH keys
   hosts: all
   gather_facts: no
-  connection: local
   vars:
     - known_hosts: "~/.ssh/known_hosts"
   tasks:
     - name: scan and register
       command: "ssh-keyscan -p {{ansible_port|default(22)}} {{ansible_host|default(inventory_hostname)}}"
       register: "host_keys"
+      delegate_to: localhost
       changed_when: false
 
     - assert:
