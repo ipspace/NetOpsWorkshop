@@ -29,16 +29,18 @@ sudo apt-get $QUIET update
 # Install missing packages
 #
 echo "Install missing packages (also a pretty long operation)"
-sudo apt-get $QUIET install python3 python3-setuptools ifupdown python3-pip >/dev/null
+sudo apt-get $QUIET -y install python3 python3-setuptools ifupdown python3-pip >/dev/null
+echo "Fix Python SSL/cryptography packages"
+sudo pip3 install $REPLACE $QUIET pyopenssl cryptography
 echo "Install nice-to-have packages"
-sudo apt-get $QUIET install git ack-grep jq tree sshpass colordiff >/dev/null
+sudo apt-get $QUIET -y install git ack-grep jq tree sshpass colordiff >/dev/null
 #
 # Install Ansible and NAPALM dependencies
 #
 echo "Install Python development and build modules"
-sudo apt-get $QUIET install build-essential python3-dev libffi-dev >/dev/null
+sudo apt-get $QUIET -y install build-essential python3-dev libffi-dev >/dev/null
 echo "Installing NAPALM dependencies"
-sudo apt-get $QUIET install libxslt1-dev libssl-dev python3-lxml >/dev/null
+sudo apt-get $QUIET -y install libxslt1-dev libssl-dev python3-lxml >/dev/null
 #
 # Install Python components
 #
