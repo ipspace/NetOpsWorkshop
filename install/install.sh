@@ -9,8 +9,9 @@ Ansible/NAPALM/pyATS installation script
 This script updates your system, installs additional APT and PIP
 packages, and installs Ansible, NAPALM, pyATS and ntc-templates
 
-The script was adapted for and tested on Ubuntu 20.04. Do not use it
-on earlier versions of Ubuntu.
+The script was adapted for and tested (in January 2024) on Ubuntu 20.04
+and Ubuntu 22.04. Do not use it on earlier versions of Ubuntu or other
+Linux distributions.
 
 NOTE: the script is set to abort on first error. If the installation
 completed you're probably OK even though you might have seen errors
@@ -23,22 +24,26 @@ set -e
 #
 QUIET="-qq"
 REPLACE="--ignore-installed --upgrade"
+SUDO='sudo DEBIAN_FRONTEND=noninteractive NEEDRESTART_MODE=a'
 echo "Update installed software to latest release (might take a long time)"
-sudo apt-get $QUIET update
+$SUDO apt-get $QUIET update
+$SUDO apt-get $QUIET -y upgrade >/dev/null
 #
 # Install missing packages
 #
 echo "Install missing packages (also a pretty long operation)"
-sudo apt-get $QUIET install python3 python3-setuptools ifupdown python3-pip >/dev/null
+$SUDO apt-get $QUIET -y install python3 python3-setuptools ifupdown python3-pip >/dev/null
+echo "Fix Python SSL/cryptography packages"
+sudo pip3 install $REPLACE $QUIET pyopenssl cryptography
 echo "Install nice-to-have packages"
-sudo apt-get $QUIET install git ack-grep jq tree sshpass colordiff >/dev/null
+$SUDO apt-get $QUIET -y install git ack-grep jq tree sshpass colordiff >/dev/null
 #
 # Install Ansible and NAPALM dependencies
 #
 echo "Install Python development and build modules"
-sudo apt-get $QUIET install build-essential python3-dev libffi-dev >/dev/null
+$SUDO apt-get $QUIET -y install build-essential python3-dev libffi-dev >/dev/null
 echo "Installing NAPALM dependencies"
-sudo apt-get $QUIET install libxslt1-dev libssl-dev python3-lxml >/dev/null
+$SUDO apt-get $QUIET -y install libxslt1-dev libssl-dev python3-lxml >/dev/null
 #
 # Install Python components
 #
@@ -62,8 +67,11 @@ sudo pip3 install $QUIET ansible
 #
 # Install NAPALM
 #
-echo "Installing NAPALM, pyATS and Genie"
-sudo pip3 install $QUIET napalm genie pyats ntc-templates
+echo "Installing NAPALM, pyATS and ntc-templates"
+sudo python3 -m pip install $REPLACE $QUIET junos-eznc
+sudo python3 -m pip install $REPLACE $QUIET requests
+sudo python3 -m pip install $QUIET napalm pyats ntc-templates
+sudo python3 -m pip install $QUIET genie
 echo
 echo "Installing napalm-ansible into .ansible/napalm-ansible"
 mkdir -p ~/.ansible
