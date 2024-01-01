@@ -25,7 +25,7 @@ QUIET="-qq"
 REPLACE="--ignore-installed --upgrade"
 echo "Update installed software to latest release (might take a long time)"
 sudo apt-get $QUIET update
-sudo apt-get $QUIET upgrade
+sudo apt-get $QUIET -y upgrade
 #
 # Install missing packages
 #
