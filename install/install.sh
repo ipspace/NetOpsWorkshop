@@ -31,7 +31,6 @@ sudo apt-get $QUIET update
 echo "Install missing packages (also a pretty long operation)"
 sudo apt-get $QUIET -y install python3 python3-setuptools ifupdown python3-pip >/dev/null
 echo "Fix Python SSL/cryptography packages"
-sudo apt remove $QUIET -y python3-openssl
 sudo pip3 install $REPLACE $QUIET pyopenssl cryptography
 echo "Install nice-to-have packages"
 sudo apt-get $QUIET -y install git ack-grep jq tree sshpass colordiff >/dev/null
@@ -65,8 +64,8 @@ sudo pip3 install $QUIET ansible
 #
 # Install NAPALM
 #
-echo "Installing NAPALM, pyATS and Genie"
-sudo pip3 install $QUIET napalm genie pyats ntc-templates
+echo "Installing NAPALM, pyATS and ntc-templates"
+sudo pip3 install $QUIET napalm pyats ntc-templates
 echo
 echo "Installing napalm-ansible into .ansible/napalm-ansible"
 mkdir -p ~/.ansible
