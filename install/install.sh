@@ -66,7 +66,10 @@ sudo pip3 install $QUIET ansible
 # Install NAPALM
 #
 echo "Installing NAPALM, pyATS and ntc-templates"
+sudo pip3 install $REPLACE $QUIET junos-eznc
+sudo pip3 install $REPLACE $QUIET requests
 sudo pip3 install $QUIET napalm pyats ntc-templates
+sudo pip3 install $QUIET genie
 echo
 echo "Installing napalm-ansible into .ansible/napalm-ansible"
 mkdir -p ~/.ansible
