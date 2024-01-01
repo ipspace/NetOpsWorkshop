@@ -9,8 +9,9 @@ Ansible/NAPALM/pyATS installation script
 This script updates your system, installs additional APT and PIP
 packages, and installs Ansible, NAPALM, pyATS and ntc-templates
 
-The script was adapted for and tested on Ubuntu 20.04. Do not use it
-on earlier versions of Ubuntu.
+The script was adapted for and tested (in January 2024) on Ubuntu 20.04
+and Ubuntu 22.04. Do not use it on earlier versions of Ubuntu or other
+Linux distributions.
 
 NOTE: the script is set to abort on first error. If the installation
 completed you're probably OK even though you might have seen errors
