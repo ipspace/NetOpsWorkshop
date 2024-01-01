@@ -31,6 +31,7 @@ sudo apt-get $QUIET update
 echo "Install missing packages (also a pretty long operation)"
 sudo apt-get $QUIET -y install python3 python3-setuptools ifupdown python3-pip >/dev/null
 echo "Fix Python SSL/cryptography packages"
+sudo apt remove $QUIET -y python3-openssl
 sudo pip3 install $REPLACE $QUIET pyopenssl cryptography
 echo "Install nice-to-have packages"
 sudo apt-get $QUIET -y install git ack-grep jq tree sshpass colordiff >/dev/null
