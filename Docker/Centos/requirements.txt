@@ -1,5 +1,5 @@
 ncclient==0.6.9
-cryptography==3.3.2
+cryptography==39.0.1
 ansible==7.0.0
 networklab
 paramiko
