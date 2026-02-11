@@ -1,5 +1,6 @@
 # Ignore Vagrant directories
 .vagrant
+.vscode
 .DS_Store
 /Vagrantfile
 /vagrantfile
